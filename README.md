@@ -24,7 +24,13 @@
   ```
   2. Open MySQL shell and migrate the database schema by typing `source schema.sql`
   3. Type `exit` to exit the MySQL shell
-  4. Start the server by typing `npm start`
+  4. Create a `.gitignore` file and the following folder and files:
+  ```
+  node_modules
+  .DS_Store
+  .env
+  ```
+  5. Start the server by typing `npm start`
 
   ## Tests
 
@@ -33,5 +39,3 @@
   3. Test the routes in Insomnia or other API design platform
 
   ## Contact
-  
-  Check out other projects at [PetitsPoissons](https://github.com/PetitsPoissons/).
