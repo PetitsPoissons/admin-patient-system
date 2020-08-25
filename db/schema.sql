@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS shrinko_db;
+CREATE DATABASE shrinko_db;
