@@ -17,7 +17,7 @@ User.init(
       allowNull: false,
       unique: true,
       validate: {
-        len: [6, 12]
+        len: [6, 20]
       }
     },
     password: {
@@ -25,7 +25,7 @@ User.init(
       allowNull: false,
       unique: true,
       validate: {
-        len: [6, 12]
+        len: [6, 20]
       }
     },
     email: {
@@ -50,7 +50,7 @@ User.init(
       }      
     },
     dob: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false
     },
     ssn: {
