@@ -1,0 +1,6 @@
+INSERT INTO `Access` (`access_id`,`access_type`,`access_desc`,`createdAt`,`updatedAt`) VALUES (1,'superuser','complete access throughout','2020-08-27 07:02:33','2017-08-27 07:02:33');
+INSERT INTO `Access` (`access_id`,`access_type`,`access_desc`,`createdAt`,`updatedAt`) VALUES (2,'administrator','access and edit all data, except for access privileges and data related to security and authentication','2020-08-27 07:02:33','2017-08-27 07:02:33');
+INSERT INTO `Access` (`access_id`,`access_type`,`access_desc`,`createdAt`,`updatedAt`) VALUES (3,'clinician','access and edit own clients only (documentation, notes, billing, and reports)','2020-08-27 07:02:33','2017-08-27 07:02:33');
+INSERT INTO `Access` (`access_id`,`access_type`,`access_desc`,`createdAt`,`updatedAt`) VALUES (4,'basic','access and edit user, client descriptive data as well diagnosis and procedure libraries but cannot see any data related to clinical interventions (documentation, notes and reports on clients)','2020-08-27 07:02:33','2017-08-27 07:02:33');
+INSERT INTO `Access` (`access_id`,`access_type`,`access_desc`,`createdAt`,`updatedAt`) VALUES (5,'biller','manage billing for all clients, but cannot see any data related to clinical interventions (documentation, notes and reports on clients)','2020-08-27 07:02:33','2017-08-27 07:02:33');
+
