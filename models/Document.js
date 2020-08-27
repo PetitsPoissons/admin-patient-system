@@ -1,3 +1,4 @@
+/*
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -11,7 +12,7 @@ Document.init(
       primaryKey: true,
       autoIncrement: true
     },
-    document_title: {
+    document_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -28,3 +29,4 @@ Document.init(
 );
 
 module.exports = Document;
+*/

@@ -37,6 +37,12 @@ Client.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        alt_phone: {
+            type: DataTypes.STRING
+        },
+        email: {
+            type: DataTypes.STRING,
+        },
         street: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -60,8 +66,7 @@ Client.init(
             allowNull: false
         },
         insurance: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
+            type: DataTypes.BOOLEAN
         },
         active: {
             type: DataTypes.BOOLEAN,
@@ -78,4 +83,3 @@ Client.init(
 );
 
 module.exports = Client;
-

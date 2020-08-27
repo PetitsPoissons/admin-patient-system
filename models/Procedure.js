@@ -1,3 +1,4 @@
+/*
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -11,7 +12,7 @@ Procedure.init(
       primaryKey: true,
       autoIncrement: true
     },
-    procedure_title: {
+    procedure_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -31,3 +32,4 @@ Procedure.init(
 );
 
 module.exports = Procedure;
+*/

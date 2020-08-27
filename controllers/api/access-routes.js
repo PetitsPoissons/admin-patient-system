@@ -4,6 +4,7 @@ const { Access } = require('../../models');
 /******************/
 /***** CREATE *****/
 /******************/
+
 router.post('/', (req, res) => {
   Access.create(req.body)
   .then(dbAccessData => res.json(dbAccessData))
@@ -16,6 +17,7 @@ router.post('/', (req, res) => {
 /******************/
 /****** READ ******/
 /******************/
+
 router.get('/', (req, res) => {
   Access.findAll()
     .then(dbAccessData => res.json(dbAccessData))
@@ -33,7 +35,7 @@ router.get('/:id', (req, res) => {
   })
     .then(dbAccessData => {
       if (!dbAccessData) {
-        res.status(404).json({ message: 'This access level was not level found' });
+        res.status(404).json({ message: 'This access level was not found' });
         return;
       }
       res.json(dbAccessData);
@@ -47,6 +49,7 @@ router.get('/:id', (req, res) => {
 /******************/
 /***** UPDATE *****/
 /******************/
+
 router.put('/:id', (req, res) => {
   Access.update(req.body, {
     where: {
@@ -69,6 +72,7 @@ router.put('/:id', (req, res) => {
 /******************/
 /***** DELETE *****/
 /******************/
+
 router.delete('/:id', (req, res) => {
   Access.destroy({
     where: {
