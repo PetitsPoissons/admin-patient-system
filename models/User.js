@@ -49,7 +49,7 @@ User.init(
       }      
     },
     dob: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     ssn: {
@@ -63,7 +63,7 @@ User.init(
     alt_phone: {
       type: DataTypes.STRING
     },
-    street: {
+    street_address: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -84,9 +84,6 @@ User.init(
     zip: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    supervisor_id: {
-      type: DataTypes.UUID
     },
     access_id: {
       type: DataTypes.INTEGER,
