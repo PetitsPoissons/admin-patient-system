@@ -1,4 +1,3 @@
-//const Sequelize = require('sequelize');
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -9,7 +8,7 @@ User.init(
     user_id: {
       primaryKey: true,
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4, //defaultValue: Sequelize.UUIDV4,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false
     },
     username: {
@@ -50,7 +49,7 @@ User.init(
       }      
     },
     dob: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     ssn: {
@@ -91,7 +90,11 @@ User.init(
     },
     access_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'access',
+        key: 'access_id'
+      }
     },
     active: {
       type: DataTypes.BOOLEAN,
@@ -118,7 +121,6 @@ User.init(
   },
   {
     sequelize,
-    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'user'
