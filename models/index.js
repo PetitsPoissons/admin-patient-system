@@ -1,6 +1,8 @@
 const User = require('./User');
 const Access = require('./Access');
 const Intervention = require('./Intervention');
+const Procedure = require('./Procedure');
+const Document = require('./Document');
 const Client = require('./Client');
 const Diagnosis = require('./Diagnosis');
 
@@ -13,4 +15,11 @@ Access.hasOne(User, {
   foreignKey: 'access_id'
 })
 
-module.exports = { User, Access, Intervention, Client, Diagnosis };
+module.exports = {
+  User,
+  Access,
+  Intervention,
+  Procedure,
+  Document,
+  Client,
+  Diagnosis };
