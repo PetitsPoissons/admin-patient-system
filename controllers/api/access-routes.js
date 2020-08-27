@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Access } = require('../../models');
 
 /******************/
 /***** CREATE *****/
 /******************/
 router.post('/', (req, res) => {
-  User.create(req.body)
-  .then(dbUserData => res.json(dbUserData))
+  Access.create(req.body)
+  .then(dbAccessData => res.json(dbAccessData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -17,10 +17,8 @@ router.post('/', (req, res) => {
 /****** READ ******/
 /******************/
 router.get('/', (req, res) => {
-  User.findAll({
-    attributes: { exclude: ['password'] }
-  })
-    .then(dbUserData => res.json(dbUserData))
+  Access.findAll()
+    .then(dbAccessData => res.json(dbAccessData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -28,18 +26,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  User.findOne({
-    attributes: { exclude: ['password'] },
+  Access.findOne({
     where: {
-      user_id: req.params.id
+      access_id: req.params.id
     }
   })
-    .then(dbUserData => {
-      if (!dbUserData) {
-        res.status(404).json({ message: 'No user found' });
+    .then(dbAccessData => {
+      if (!dbAccessData) {
+        res.status(404).json({ message: 'This access level was not level found' });
         return;
       }
-      res.json(dbUserData);
+      res.json(dbAccessData);
     })
     .catch(err => {
       console.log(err);
@@ -51,17 +48,17 @@ router.get('/:id', (req, res) => {
 /***** UPDATE *****/
 /******************/
 router.put('/:id', (req, res) => {
-  User.update(req.body, {
+  Access.update(req.body, {
     where: {
-      user_id: req.params.id
+      access_id: req.params.id
     }
   })
-  .then(dbUserData => {
-    if (!dbUserData[0]) {
-      res.status(404).json({ message: 'No user found' });
+  .then(dbAccessData => {
+    if (!dbAccessData[0]) {
+      res.status(404).json({ message: 'This access level was not found' });
       return;
     }
-    res.json(dbUserData);
+    res.json(dbAccessData);
   })
   .catch(err => {
     console.log(err);
@@ -73,17 +70,17 @@ router.put('/:id', (req, res) => {
 /***** DELETE *****/
 /******************/
 router.delete('/:id', (req, res) => {
-  User.destroy({
+  Access.destroy({
     where: {
-      user_id: req.params.id
+      access_id: req.params.id
     }
   })
-  .then(dbUserData => {
-    if (!dbUserData) {
-      res.status(404).json({ message: 'No user found' });
+  .then(dbAccessData => {
+    if (!dbAccessData) {
+      res.status(404).json({ message: 'This access level was not found' });
       return;
     }
-    res.json(dbUserData);
+    res.json(dbAccessData);
   })
   .catch(err => {
     console.log(err);

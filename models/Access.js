@@ -16,7 +16,7 @@ Access.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isIn: [['administrator', 'clinician', 'basic', 'biller']],
+        isIn: [['owner', 'administrator', 'clinician', 'basic', 'biller']],
       }
     },
     access_desc: {
