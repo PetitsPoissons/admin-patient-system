@@ -1,3 +1,4 @@
 const User = require('./User');
+const Access = require('./Access');
 
-module.exports = { User };
+module.exports = { User, Access };
