@@ -43,7 +43,7 @@ Client.init(
         email: {
             type: DataTypes.STRING,
         },
-        street: {
+        street_address: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -66,7 +66,8 @@ Client.init(
             allowNull: false
         },
         insurance: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         },
         active: {
             type: DataTypes.BOOLEAN,
