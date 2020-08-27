@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Client } = require('../../models');
+const { Procedure } = require('../../models');
 
 /******************/
 /***** CREATE *****/
 /******************/
 
 router.post('/', (req, res) => {
-  Client.create(req.body)
-  .then(dbClientData => res.json(dbClientData))
+  Procedure.create(req.body)
+  .then(dbProcedureData => res.json(dbProcedureData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -19,10 +19,8 @@ router.post('/', (req, res) => {
 /******************/
 
 router.get('/', (req, res) => {
-  Client.findAll({
-    //attributes: { exclude: ['password'] }
-  })
-    .then(dbClientData => res.json(dbClientData))
+  Procedure.findAll()
+    .then(dbProcedureData => res.json(dbProcedureData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

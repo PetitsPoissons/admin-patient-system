@@ -1,4 +1,3 @@
-/*
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -16,11 +15,14 @@ Procedure.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    procedure_code: {
-      type: DataTypes.STRING
-    },
     procedure_desc: {
       type: DataTypes.TEXT
+    },
+    cpt_code: {
+      type: DataTypes.STRING
+    },
+    duration: {
+      type: DataTypes.STRING
     }
   },
   {
@@ -32,4 +34,3 @@ Procedure.init(
 );
 
 module.exports = Procedure;
-*/

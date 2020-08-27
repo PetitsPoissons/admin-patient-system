@@ -1,9 +1,9 @@
 const User = require('./User');
 const Access = require('./Access');
-// const Intervention = require('./Intervention');
-// const Procedure = require('./Procedure');
-// const Document = require('./Document');
 const Client = require('./Client');
+const Procedure = require('./Procedure');
+// const Intervention = require('./Intervention');
+// const Document = require('./Document');
 // const Diagnosis = require('./Diagnosis');
 
 // create associations between User and Access
@@ -49,10 +49,9 @@ User.belongsTo(Access, {
 module.exports = {
   User,
   Access,
-  Client
+  Client,
+  Procedure
 };
   // Intervention,
-  // Procedure,
   // Document,
-  // Client,
-  // Diagnosis };
+  // Diagnosis

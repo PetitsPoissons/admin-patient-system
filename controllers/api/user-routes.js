@@ -4,6 +4,7 @@ const { User, Access } = require('../../models');
 /******************/
 /***** CREATE *****/
 /******************/
+
 router.post('/', (req, res) => {
   User.create(req.body)
   .then(dbUserData => res.json(dbUserData))
@@ -16,6 +17,7 @@ router.post('/', (req, res) => {
 /******************/
 /****** READ ******/
 /******************/
+
 router.get('/', (req, res) => {
   User.findAll({
     //attributes: { exclude: ['password'] },
@@ -62,6 +64,7 @@ router.get('/:id', (req, res) => {
 /******************/
 /***** UPDATE *****/
 /******************/
+
 router.put('/:id', (req, res) => {
   User.update(req.body, {
     where: {
@@ -84,6 +87,7 @@ router.put('/:id', (req, res) => {
 /******************/
 /***** DELETE *****/
 /******************/
+
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
