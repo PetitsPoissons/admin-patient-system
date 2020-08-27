@@ -1,4 +1,16 @@
 const User = require('./User');
 const Access = require('./Access');
+const Intervention = require('./Intervention');
+const Client = require('./Client');
+const Diagnosis = require('./Diagnosis');
 
-module.exports = { User, Access };
+// create associations between User and Access
+User.belongsTo(Access, {
+  foreignKey: 'access_id'
+});
+
+Access.hasOne(User, {
+  foreignKey: 'access_id'
+})
+
+module.exports = { User, Access, Intervention, Client, Diagnosis };
