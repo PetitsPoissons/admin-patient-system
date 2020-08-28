@@ -23,7 +23,7 @@ Document.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'procedure'
+    modelName: 'document'
   }  
 );
 
