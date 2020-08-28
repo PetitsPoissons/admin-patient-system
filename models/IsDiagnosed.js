@@ -14,18 +14,18 @@ IsDiagnosed.init(
         user_id: {
             type: DataTypes.UUID,
             allowNull: false,
-            // references: {
-            //   model: 'user',
-            //   key: 'user_id'
-            // }
+            references: {
+              model: 'user',
+              key: 'user_id'
+            }
         },
         client_id: {
             type: DataTypes.UUID,
             allowNull: false,
-            // references: {
-            //   model: 'client',
-            //   key: 'client_id'
-            // }
+            references: {
+              model: 'client',
+              key: 'client_id'
+            }
         },
         dx_id: {
             type: DataTypes.INTEGER,

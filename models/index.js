@@ -5,6 +5,7 @@ const Procedure = require('./Procedure');
 const Document = require('./Document');
 const Diagnosis = require('./Diagnosis');
 const Record = require('./Record');
+const IsDiagnosed = require('./IsDiagnosed');
 
 // create associations between User and Access
 Access.hasMany(User, {
@@ -66,6 +67,49 @@ Record.belongsTo(Document, {
   onDelete: 'CASCADE'
 });
 
+// create associations between User and Client - this allows 
+// both the User and the Client models to query each other's
+// information in the context of a diagnosis made (IsDiagnosed model)
+User.belongsToMany(Client, {
+  through: IsDiagnosed,
+  foreignKey: 'user_id'
+});
+Client.belongsToMany(User, {
+  through: IsDiagnosed,
+  foreignKey: 'client_id'
+});
+
+// create associations between User and IsDiagnosed
+User.hasMany(IsDiagnosed, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+IsDiagnosed.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+// create associations between Client and IsDiagnosed
+Client.hasMany(IsDiagnosed, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE'
+});
+IsDiagnosed.belongsTo(Client, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE'
+});
+
+// create associated between diagnosis and isdiagnosed (similar to procedure and record)
+
+Diagnosis.hasMany(IsDiagnosed, {
+  foreignKey: 'dx_id',
+  onDelete: 'CASCADE'
+});
+IsDiagnosed.belongsTo(Diagnosis, {
+  foreignKey: 'dx_id',
+  onDelete: 'CASCADE'
+});
+
 module.exports = {
   User,
   Access,
@@ -73,5 +117,6 @@ module.exports = {
   Procedure,
   Document,
   Record,
-  Diagnosis
+  Diagnosis,
+  IsDiagnosed
 };
