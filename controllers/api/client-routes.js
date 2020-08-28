@@ -14,6 +14,7 @@ router.post('/', (req, res) => {
   });
 });
 
+
 /******************/
 /****** READ ******/
 /******************/
@@ -27,6 +28,72 @@ router.get('/', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get('/:id', (req, res) => {
+  Client.findOne({
+    where: {
+      client_id: req.params.id
+    }
+  })
+  .then(dbClientData => {
+    if (!dbClientData) {
+      res.status(404).json({ message: 'No client found' });
+      return;
+    }
+    res.json(dbClientData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+/******************/
+/***** UPDATE *****/
+/******************/
+
+router.put('/:id', (req, res) => {
+  Client.update(req.body, {
+    where: {
+      client_id: req.params.id
+    }
+  })
+  .then(dbClientData => {
+    console.log(dbClientData);
+    if (!dbClientData[0]) {
+      res.status(404).json({ message: 'No client found' });
+      return;
+    }
+    res.json(dbClientData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+/******************/
+/***** DELETE *****/
+/******************/
+
+router.delete('/:id', (req, res) => {
+  Client.destroy({
+    where: {
+      client_id: req.params.id
+    }
+  })
+  .then(dbClientData => {
+    if (!dbClientData) {
+      res.status(404).json({ message: 'No client found '});
+      return;
+    }
+    res.json(dbClientData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;
