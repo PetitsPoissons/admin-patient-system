@@ -26,7 +26,7 @@ Client.init(
             }      
         },
         dob: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATE,
             allowNull: false
         },
         ssn: {

@@ -4,9 +4,7 @@ const Client = require('./Client');
 const Procedure = require('./Procedure');
 const Document = require('./Document');
 const Diagnosis = require('./Diagnosis');
-// const Intervention = require('./Intervention');
-
-
+const Record = require('./Record');
 
 // create associations between User and Access
 Access.hasMany(User, {
@@ -16,37 +14,37 @@ User.belongsTo(Access, {
   foreignKey: 'access_id'
 });
 
-// create associations between User and Intervention
-// User.hasMany(Intervention, {
-//   foreignKey: 'user_id'
-// });
-// Intervention.belongsTo(User, {
-//   foreignKey: 'user_id'
-// });
+// create associations between User and Record
+User.hasMany(Record, {
+  foreignKey: 'user_id'
+});
+Record.belongsTo(User, {
+  foreignKey: 'user_id'
+});
 
-// create associations between Client and Intervention
-// Client.hasMany(Intervention, {
-//   foreignKey: 'client_id'
-// });
-// Intervention.belongsTo(Client, {
-//   foreignKey: 'client_id'
-// });
+// create associations between Client and Record
+Client.hasMany(Record, {
+  foreignKey: 'client_id'
+});
+Record.belongsTo(Client, {
+  foreignKey: 'client_id'
+});
 
-// create associations between Procedure and Intervention
-// Procedure.hasMany(Intervention, {
-//   foreignKey: 'procedure_id'
-// });
-// Intervention.belongsTo(Procedure, {
-//   foreignKey: 'procedure_id'
-// });
+// create associations between Procedure and Record
+Procedure.hasMany(Record, {
+  foreignKey: 'procedure_id'
+});
+Record.belongsTo(Procedure, {
+  foreignKey: 'procedure_id'
+});
 
-// create associations between Document and Intervention
-// Document.hasMany(Intervention, {
-//   foreignKey: 'document_id'
-// });
-// Intervention.belongsTo(Document, {
-//   foreignKey:'document_id'
-// });
+// create associations between Document and Record
+Document.hasMany(Record, {
+  foreignKey: 'document_id'
+});
+Record.belongsTo(Document, {
+  foreignKey:'document_id'
+});
 
 module.exports = {
   User,
@@ -54,6 +52,6 @@ module.exports = {
   Client,
   Procedure,
   Document,
+  Record,
   Diagnosis
 };
-  // Intervention,

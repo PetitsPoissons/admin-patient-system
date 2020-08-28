@@ -1,10 +1,9 @@
-/*
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Intervention extends Model {}
+class Record extends Model {}
 
-Intervention.init(
+Record.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,45 +14,45 @@ Intervention.init(
     user_id: {
       type: DataTypes.UUID,
       allowNull: false,
-      // references: {
-      //   model: 'user',
-      //   key: 'user_id'
-      // }
+      references: {
+        model: 'user',
+        key: 'user_id'
+      }
     },
     client_id: {
       type: DataTypes.UUID,
       allowNull: false,
-      // references: {
-      //   model: 'client',
-      //   key: 'client_id'
-      // }
+      references: {
+        model: 'client',
+        key: 'client_id'
+      }
     },
     date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     procedure_id: {
       type: DataTypes.INTEGER,
-      // references: {
-      //   model: 'procedure',
-      //   key: 'procedure_id'
-      // }
+      allowNull: false,
+      references: {
+        model: 'procedure',
+        key: 'procedure_id'
+      }
     },
     document_id: {
       type: DataTypes.INTEGER,
-      // references: {
-      //   model: 'document',
-      //   key: 'document_id'
-      // }
+      references: {
+        model: 'document',
+        key: 'document_id'
+      }
     }
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'intervention'
+    modelName: 'record'
   }
 );
 
-module.exports = Intervention;
-*/
+module.exports = Record;
