@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User, Access } = require('../../models');
+const { User, Access, Client, Record } = require('../../models');
+const sequelize = require('../../config/connection');
 
 /******************/
 /***** CREATE *****/
@@ -41,11 +42,29 @@ router.post('/login', (req, res) => {
 
 router.get('/', (req, res) => {
   User.findAll({
-    //attributes: { exclude: ['password'] },
+    attributes: [
+      'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+        '(SELECT COUNT(DISTINCT record.client_id) FROM record WHERE user.user_id = record.user_id)'
+      ), 'clients_nb']
+    ],
+    order: ['last_name'],
+    exclude: ['password'],
     include: [
       {
         model: Access,
         attributes: ['access_id', 'access_type']
+      },
+      {
+        model: Client,
+        attributes: [
+          'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+          '(SELECT COUNT(*) FROM record WHERE clients.client_id = record.client_id)'
+          ), 'records_nb']
+        ],
+        through: {
+          model: Record,
+          attributes: ['date']
+        }
       }
     ]
   })
@@ -55,10 +74,22 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+attributes: {
+  include: [
+    [sequelize.fn('COUNT', sequelize.col('hats')), 'n_hats']
+  ]
+}
 
 router.get('/:id', (req, res) => {
   User.findOne({
-    //attributes: { exclude: ['password'] },
+    attributes: {
+      include: [
+        'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+          '(SELECT COUNT(DISTINCT record.client_id) FROM record WHERE user.user_id = record.user_id)'
+        ), 'clients_nb']
+      ],
+      exclude: ['password']
+    },
     where: {
       user_id: req.params.id
     },
@@ -66,6 +97,18 @@ router.get('/:id', (req, res) => {
       {
         model: Access,
         attributes: ['access_id', 'access_type']
+      },
+      {
+        model: Client,
+        attributes: [
+          'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+          '(SELECT COUNT(*) FROM record WHERE clients.client_id = record.client_id)'
+          ), 'records_nb']
+        ],
+        through: {
+          model: Record,
+          attributes: ['date']
+        }
       }
     ]
   })
