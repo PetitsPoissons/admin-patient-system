@@ -1,6 +1,5 @@
 [
   {
-    "client_id": "5f4844a9fc13ae79ef000000",
     "email": "mkeri0@prlog.org",
     "first_name": "Mikael",
     "last_name": "Keri",
@@ -16,7 +15,6 @@
     "active":false
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000001",
     "email": null, "first_name": "Buddie",
     "last_name": "Gravells",
     "dob": "1996-04-25 19:34:00",
@@ -31,7 +29,6 @@
     "active":true
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000002",
     "email": "vfossett2@biglobe.ne.jp",
     "first_name": "Vincenz",
     "last_name": "Fossett",
@@ -47,7 +44,6 @@
     "active": false
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000003",
     "email": "vitscowics3@acquirethisname.com",
     "first_name": "Valentia",
     "last_name": "Itscowics",
@@ -63,7 +59,6 @@
     "active": true
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000004",
     "email": "ddominey4@hostgator.com",
     "first_name": "Debora",
     "last_name": "Dominey",
@@ -79,7 +74,6 @@
     "active": false
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000005",
     "email": null,
     "first_name": "Tiphany",
     "last_name": "Noice",
@@ -95,7 +89,6 @@
     "active": true
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000006",
     "email": null,
     "first_name": "Anette",
     "last_name": "Proppers",
@@ -111,7 +104,6 @@
     "active": true
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000007",
     "email": "abellfield7@godaddy.com",
     "first_name": "Angy",
     "last_name": "Bellfield",
@@ -127,7 +119,6 @@
     "active":false
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000008",
     "email": null,
     "first_name": "Shandie",
     "last_name": "Ellam",
@@ -143,7 +134,6 @@
     "active":false
   },
   {
-    "client_id": "5f4844a9fc13ae79ef000009",
     "email": "sglyssanne9@independent.co.uk",
     "first_name": "Sinclair",
     "last_name": "Glyssanne",
