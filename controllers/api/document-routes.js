@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Procedure } = require('../../models');
+const { Document } = require('../../models');
 
 /******************/
 /***** CREATE *****/
 /******************/
 
 router.post('/', (req, res) => {
-  Procedure.create(req.body)
-  .then(dbProcedureData => res.json(dbProcedureData))
+  Document.create(req.body)
+  .then(dbDocumentData => res.json(dbDocumentData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
 /******************/
 
 router.get('/', (req, res) => {
-  Procedure.findAll()
-    .then(dbProcedureData => res.json(dbProcedureData))
+  Document.findAll()
+    .then(dbDocumentData => res.json(dbDocumentData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -28,17 +28,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Procedure.findOne({
+  Document.findOne({
     where: {
-      procedure_id: req.params.id
+      document_id: req.params.id
     }
   })
-    .then(dbProcedureData => {
-      if (!dbProcedureData) {
-        res.status(404).json({ message: 'This procedure was not found' });
+    .then(dbDocumentData => {
+      if (!dbDocumentData) {
+        res.status(404).json({ message: 'This document was not found' });
         return;
       }
-      res.json(dbProcedureData);
+      res.json(dbDocumentData);
     })
     .catch(err => {
       console.log(err);
@@ -51,17 +51,17 @@ router.get('/:id', (req, res) => {
 /******************/
 
 router.put('/:id', (req, res) => {
-  Procedure.update(req.body, {
+  Document.update(req.body, {
     where: {
-      procedure_id: req.params.id
+      document_id: req.params.id
     }
   })
-  .then(dbProcedureData => {
-    if (!dbProcedureData[0]) {
-      res.status(404).json({ message: 'This procedure was not found' });
+  .then(dbDocumentData => {
+    if (!dbDocumentData[0]) {
+      res.status(404).json({ message: 'This document was not found' });
       return;
     }
-    res.json(dbProcedureData);
+    res.json(dbDocumentData);
   })
   .catch(err => {
     console.log(err);
@@ -74,17 +74,17 @@ router.put('/:id', (req, res) => {
 /******************/
 
 router.delete('/:id', (req, res) => {
-  Procedure.destroy({
+  Document.destroy({
     where: {
-      procedure_id: req.params.id
+      document_id: req.params.id
     }
   })
-  .then(dbProcedureData => {
-    if (!dbProcedureData) {
-      res.status(404).json({ message: 'This procedure was not found' });
+  .then(dbDocumentData => {
+    if (!dbDocumentData) {
+      res.status(404).json({ message: 'This document was not found' });
       return;
     }
-    res.json(dbProcedureData);
+    res.json(dbDocumentData);
   })
   .catch(err => {
     console.log(err);

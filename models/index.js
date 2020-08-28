@@ -2,9 +2,11 @@ const User = require('./User');
 const Access = require('./Access');
 const Client = require('./Client');
 const Procedure = require('./Procedure');
+const Document = require('./Document');
+const Diagnosis = require('./Diagnosis');
 // const Intervention = require('./Intervention');
-// const Document = require('./Document');
-// const Diagnosis = require('./Diagnosis');
+
+
 
 // create associations between User and Access
 Access.hasMany(User, {
@@ -50,8 +52,8 @@ module.exports = {
   User,
   Access,
   Client,
-  Procedure
+  Procedure,
+  Document,
+  Diagnosis
 };
   // Intervention,
-  // Document,
-  // Diagnosis

@@ -1,4 +1,3 @@
-/*
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -29,4 +28,3 @@ Document.init(
 );
 
 module.exports = Document;
-*/

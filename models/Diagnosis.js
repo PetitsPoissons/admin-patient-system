@@ -1,4 +1,3 @@
-/*
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -12,7 +11,7 @@ Diagnosis.init(
             primaryKey: true,
             autoIncrement: true
         },
-        dx_title: {
+        dx_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -33,4 +32,3 @@ Diagnosis.init(
 );
     
 module.exports = Diagnosis;
-*/
