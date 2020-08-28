@@ -37,7 +37,13 @@ Client.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        street: {
+        alt_phone: {
+            type: DataTypes.STRING
+        },
+        email: {
+            type: DataTypes.STRING,
+        },
+        street_address: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -78,4 +84,3 @@ Client.init(
 );
 
 module.exports = Client;
-

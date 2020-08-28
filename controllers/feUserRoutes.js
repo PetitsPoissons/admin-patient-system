@@ -1,11 +1,17 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User } = require('../models');
+const { User, Access } = require('../models');
 
 // display all users
 router.get('/', (req, res) => {
   User.findAll({
-    attributes: ['first_name', 'last_name', 'email', 'primary_phone']
+    attributes: ['first_name', 'last_name', 'email', 'primary_phone'],
+    include: [
+      {
+        model: Access,
+        attributes: ['access_type']
+      }
+    ]
   })
   .then(dbUserData => {
     const users = dbUserData.map(user => user.get({ plain: true }));

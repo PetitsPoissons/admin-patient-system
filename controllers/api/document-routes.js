@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Access } = require('../../models');
+const { Document } = require('../../models');
 
 /******************/
 /***** CREATE *****/
 /******************/
 
 router.post('/', (req, res) => {
-  Access.create(req.body)
-  .then(dbAccessData => res.json(dbAccessData))
+  Document.create(req.body)
+  .then(dbDocumentData => res.json(dbDocumentData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
 /******************/
 
 router.get('/', (req, res) => {
-  Access.findAll()
-    .then(dbAccessData => res.json(dbAccessData))
+  Document.findAll()
+    .then(dbDocumentData => res.json(dbDocumentData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -28,17 +28,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Access.findOne({
+  Document.findOne({
     where: {
-      access_id: req.params.id
+      document_id: req.params.id
     }
   })
-    .then(dbAccessData => {
-      if (!dbAccessData) {
-        res.status(404).json({ message: 'This access level was not found' });
+    .then(dbDocumentData => {
+      if (!dbDocumentData) {
+        res.status(404).json({ message: 'This document was not found' });
         return;
       }
-      res.json(dbAccessData);
+      res.json(dbDocumentData);
     })
     .catch(err => {
       console.log(err);
@@ -51,17 +51,17 @@ router.get('/:id', (req, res) => {
 /******************/
 
 router.put('/:id', (req, res) => {
-  Access.update(req.body, {
+  Document.update(req.body, {
     where: {
-      access_id: req.params.id
+      document_id: req.params.id
     }
   })
-  .then(dbAccessData => {
-    if (!dbAccessData[0]) {
-      res.status(404).json({ message: 'This access level was not found' });
+  .then(dbDocumentData => {
+    if (!dbDocumentData[0]) {
+      res.status(404).json({ message: 'This document was not found' });
       return;
     }
-    res.json(dbAccessData);
+    res.json(dbDocumentData);
   })
   .catch(err => {
     console.log(err);
@@ -74,17 +74,17 @@ router.put('/:id', (req, res) => {
 /******************/
 
 router.delete('/:id', (req, res) => {
-  Access.destroy({
+  Document.destroy({
     where: {
-      access_id: req.params.id
+      document_id: req.params.id
     }
   })
-  .then(dbAccessData => {
-    if (!dbAccessData) {
-      res.status(404).json({ message: 'This access level was not found' });
+  .then(dbDocumentData => {
+    if (!dbDocumentData) {
+      res.status(404).json({ message: 'This document was not found' });
       return;
     }
-    res.json(dbAccessData);
+    res.json(dbDocumentData);
   })
   .catch(err => {
     console.log(err);

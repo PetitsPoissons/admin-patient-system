@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Access } = require('../../models');
+const { Procedure } = require('../../models');
 
 /******************/
 /***** CREATE *****/
 /******************/
 
 router.post('/', (req, res) => {
-  Access.create(req.body)
-  .then(dbAccessData => res.json(dbAccessData))
+  Procedure.create(req.body)
+  .then(dbProcedureData => res.json(dbProcedureData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
 /******************/
 
 router.get('/', (req, res) => {
-  Access.findAll()
-    .then(dbAccessData => res.json(dbAccessData))
+  Procedure.findAll()
+    .then(dbProcedureData => res.json(dbProcedureData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -28,17 +28,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Access.findOne({
+  Procedure.findOne({
     where: {
-      access_id: req.params.id
+      procedure_id: req.params.id
     }
   })
-    .then(dbAccessData => {
-      if (!dbAccessData) {
-        res.status(404).json({ message: 'This access level was not found' });
+    .then(dbProcedureData => {
+      if (!dbProcedureData) {
+        res.status(404).json({ message: 'This procedure was not found' });
         return;
       }
-      res.json(dbAccessData);
+      res.json(dbProcedureData);
     })
     .catch(err => {
       console.log(err);
@@ -51,17 +51,17 @@ router.get('/:id', (req, res) => {
 /******************/
 
 router.put('/:id', (req, res) => {
-  Access.update(req.body, {
+  Procedure.update(req.body, {
     where: {
-      access_id: req.params.id
+      procedure_id: req.params.id
     }
   })
-  .then(dbAccessData => {
-    if (!dbAccessData[0]) {
-      res.status(404).json({ message: 'This access level was not found' });
+  .then(dbProcedureData => {
+    if (!dbProcedureData[0]) {
+      res.status(404).json({ message: 'This procedure was not found' });
       return;
     }
-    res.json(dbAccessData);
+    res.json(dbProcedureData);
   })
   .catch(err => {
     console.log(err);
@@ -74,17 +74,17 @@ router.put('/:id', (req, res) => {
 /******************/
 
 router.delete('/:id', (req, res) => {
-  Access.destroy({
+  Procedure.destroy({
     where: {
-      access_id: req.params.id
+      procedure_id: req.params.id
     }
   })
-  .then(dbAccessData => {
-    if (!dbAccessData) {
-      res.status(404).json({ message: 'This access level was not found' });
+  .then(dbProcedureData => {
+    if (!dbProcedureData) {
+      res.status(404).json({ message: 'This procedure was not found' });
       return;
     }
-    res.json(dbAccessData);
+    res.json(dbProcedureData);
   })
   .catch(err => {
     console.log(err);

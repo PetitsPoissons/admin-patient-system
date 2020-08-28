@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Access } = require('../../models');
 
 /******************/
 /***** CREATE *****/
 /******************/
+
 router.post('/', (req, res) => {
   User.create(req.body)
   .then(dbUserData => res.json(dbUserData))
@@ -16,9 +17,16 @@ router.post('/', (req, res) => {
 /******************/
 /****** READ ******/
 /******************/
+
 router.get('/', (req, res) => {
   User.findAll({
-    attributes: { exclude: ['password'] }
+    //attributes: { exclude: ['password'] },
+    include: [
+      {
+        model: Access,
+        attributes: ['access_id', 'access_type']
+      }
+    ]
   })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -29,10 +37,16 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   User.findOne({
-    attributes: { exclude: ['password'] },
+    //attributes: { exclude: ['password'] },
     where: {
       user_id: req.params.id
-    }
+    },
+    include: [
+      {
+        model: Access,
+        attributes: ['access_id', 'access_type']
+      }
+    ]
   })
     .then(dbUserData => {
       if (!dbUserData) {
@@ -50,6 +64,7 @@ router.get('/:id', (req, res) => {
 /******************/
 /***** UPDATE *****/
 /******************/
+
 router.put('/:id', (req, res) => {
   User.update(req.body, {
     where: {
@@ -72,6 +87,7 @@ router.put('/:id', (req, res) => {
 /******************/
 /***** DELETE *****/
 /******************/
+
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {

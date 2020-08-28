@@ -11,7 +11,7 @@ Document.init(
       primaryKey: true,
       autoIncrement: true
     },
-    document_title: {
+    document_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -23,7 +23,7 @@ Document.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'procedure'
+    modelName: 'document'
   }  
 );
 

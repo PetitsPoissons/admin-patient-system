@@ -1,3 +1,4 @@
+/*
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -14,18 +15,18 @@ Intervention.init(
     user_id: {
       type: DataTypes.UUID,
       allowNull: false,
-      references: {
-        model: 'user',
-        key: 'user_id'
-      }
+      // references: {
+      //   model: 'user',
+      //   key: 'user_id'
+      // }
     },
     client_id: {
       type: DataTypes.UUID,
       allowNull: false,
-      references: {
-        model: 'client',
-        key: 'client_id'
-      }
+      // references: {
+      //   model: 'client',
+      //   key: 'client_id'
+      // }
     },
     date: {
       type: DataTypes.STRING,
@@ -33,17 +34,17 @@ Intervention.init(
     },
     procedure_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: 'procedure',
-        key: 'procedure_id'
-      }
+      // references: {
+      //   model: 'procedure',
+      //   key: 'procedure_id'
+      // }
     },
     document_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: 'document',
-        key: 'document_id'
-      }
+      // references: {
+      //   model: 'document',
+      //   key: 'document_id'
+      // }
     }
   },
   {
@@ -55,3 +56,4 @@ Intervention.init(
 );
 
 module.exports = Intervention;
+*/
