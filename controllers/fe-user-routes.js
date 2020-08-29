@@ -5,7 +5,7 @@ const { User, Access } = require('../models');
 // display all users
 router.get('/', (req, res) => {
   User.findAll({
-    attributes: ['first_name', 'last_name', 'email', 'primary_phone'],
+    attributes: ['user_id', 'first_name', 'last_name', 'email', 'primary_phone'],
     include: [
       {
         model: Access,

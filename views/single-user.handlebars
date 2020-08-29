@@ -1,0 +1,56 @@
+<article class="row d-block w-100 mt-5">
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputFirstName">First Name</label>
+      <input type="text" class="form-control" id="userFirstName" value="{{ user.first_name }}" />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputLastName">Last Name</label>
+      <input type="text" class="form-control" id="userLastName" value="{{ user.last_name }}" />
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputUserUsername">Username</label>
+      <input type="text" class="form-control" id="inputUserUsername" value="{{ user.username }}" />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputUserPassword">Password</label>
+      <input type="password" class="form-control" id="inputUserPassword" value="{{ user.password }}" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputUserAddress">Address</label>
+    <input type="text" class="form-control" id="inputUserAddress" value="{{ user.street_address }}">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputUserCity">City</label>
+      <input type="text" class="form-control" id="inputUserCity" value="{{ user.city }}">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputUserState">State</label>
+      <select id="inputUserState" class="form-control">
+        <option selected>{{ user.state }}</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputUserZip">Zip</label>
+      <input type="text" class="form-control" id="inputUserZip" value="{{ user.zip }}">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="userActive" value={{ user.active }}>
+      <label class="form-check-label" for="userActive">
+        Active
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+</article>
+<script src="/js/edit-user.js"></script>
+<script src="/js/delete-user.js"></script>

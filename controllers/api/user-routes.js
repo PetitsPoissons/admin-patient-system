@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
       ), 'clients_nb']
     ],
     order: ['last_name'],
-    exclude: ['password'],
+    //exclude: ['password'],
     include: [
       {
         model: Access,
@@ -97,7 +97,7 @@ router.get('/:id', (req, res) => {
           '(SELECT COUNT(DISTINCT record.client_id) FROM record WHERE user.user_id = record.user_id)'
         ), 'clients_nb']
       ],
-      exclude: ['password']
+      //exclude: ['password']
     },
     where: {
       user_id: req.params.id
