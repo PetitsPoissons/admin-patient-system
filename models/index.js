@@ -4,9 +4,8 @@ const Client = require('./Client');
 const Procedure = require('./Procedure');
 const Document = require('./Document');
 const Diagnosis = require('./Diagnosis');
-// const Intervention = require('./Intervention');
-
-
+const Record = require('./Record');
+const IsDiagnosed = require('./IsDiagnosed');
 
 // create associations between User and Access
 Access.hasMany(User, {
@@ -16,37 +15,100 @@ User.belongsTo(Access, {
   foreignKey: 'access_id'
 });
 
-// create associations between User and Intervention
-// User.hasMany(Intervention, {
-//   foreignKey: 'user_id'
-// });
-// Intervention.belongsTo(User, {
-//   foreignKey: 'user_id'
-// });
+// create associations between User and Client - this allows 
+// both the User and the Client models to query each other's
+// information in the context of a record
+User.belongsToMany(Client, {
+  through: Record,
+  foreignKey: 'user_id'
+});
+Client.belongsToMany(User, {
+  through: Record,
+  foreignKey: 'client_id'
+})
 
-// create associations between Client and Intervention
-// Client.hasMany(Intervention, {
-//   foreignKey: 'client_id'
-// });
-// Intervention.belongsTo(Client, {
-//   foreignKey: 'client_id'
-// });
+// create associations between User and Record
+User.hasMany(Record, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+Record.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// create associations between Procedure and Intervention
-// Procedure.hasMany(Intervention, {
-//   foreignKey: 'procedure_id'
-// });
-// Intervention.belongsTo(Procedure, {
-//   foreignKey: 'procedure_id'
-// });
+// create associations between Client and Record
+Client.hasMany(Record, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE'
+});
+Record.belongsTo(Client, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE'
+});
 
-// create associations between Document and Intervention
-// Document.hasMany(Intervention, {
-//   foreignKey: 'document_id'
-// });
-// Intervention.belongsTo(Document, {
-//   foreignKey:'document_id'
-// });
+// create associations between Procedure and Record
+Procedure.hasMany(Record, {
+  foreignKey: 'procedure_id',
+  onDelete: 'CASCADE'
+});
+Record.belongsTo(Procedure, {
+  foreignKey: 'procedure_id',
+  onDelete: 'CASCADE'
+});
+
+// create associations between Document and Record
+Document.hasMany(Record, {
+  foreignKey: 'document_id',
+  onDelete: 'CASCADE'
+});
+Record.belongsTo(Document, {
+  foreignKey:'document_id',
+  onDelete: 'CASCADE'
+});
+
+// create associations between User and Client - this allows 
+// both the User and the Client models to query each other's
+// information in the context of a diagnosis made (IsDiagnosed model)
+User.belongsToMany(Client, {
+  through: IsDiagnosed,
+  foreignKey: 'user_id'
+});
+Client.belongsToMany(User, {
+  through: IsDiagnosed,
+  foreignKey: 'client_id'
+});
+
+// create associations between User and IsDiagnosed
+User.hasMany(IsDiagnosed, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+IsDiagnosed.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+// create associations between Client and IsDiagnosed
+Client.hasMany(IsDiagnosed, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE'
+});
+IsDiagnosed.belongsTo(Client, {
+  foreignKey: 'client_id',
+  onDelete: 'CASCADE'
+});
+
+// create associated between diagnosis and isdiagnosed (similar to procedure and record)
+
+Diagnosis.hasMany(IsDiagnosed, {
+  foreignKey: 'dx_id',
+  onDelete: 'CASCADE'
+});
+IsDiagnosed.belongsTo(Diagnosis, {
+  foreignKey: 'dx_id',
+  onDelete: 'CASCADE'
+});
 
 module.exports = {
   User,
@@ -54,6 +116,7 @@ module.exports = {
   Client,
   Procedure,
   Document,
-  Diagnosis
+  Record,
+  Diagnosis,
+  IsDiagnosed
 };
-  // Intervention,

@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Client } = require('../../models');
+const { Diagnosis } = require('../../models');
 
 /******************/
 /***** CREATE *****/
 /******************/
 
 router.post('/', (req, res) => {
-  Client.create(req.body)
-  .then(dbClientData => res.json(dbClientData))
+  Diagnosis.create(req.body)
+  .then(dbDiagnosisData => res.json(dbDiagnosisData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -20,10 +20,9 @@ router.post('/', (req, res) => {
 /******************/
 
 router.get('/', (req, res) => {
-  Client.findAll({
-    //attributes: { exclude: ['password'] }
+  Diagnosis.findAll({
   })
-    .then(dbClientData => res.json(dbClientData))
+    .then(dbDiagnosisData => res.json(dbDiagnosisData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -31,17 +30,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Client.findOne({
+  Diagnosis.findOne({
     where: {
-      client_id: req.params.id
+      dx_id: req.params.id
     }
   })
-  .then(dbClientData => {
-    if (!dbClientData) {
-      res.status(404).json({ message: 'No client found' });
+  .then(dbDiagnosisData => {
+    if (!dbDiagnosisData) {
+      res.status(404).json({ message: 'No Diagnosis found' });
       return;
     }
-    res.json(dbClientData);
+    res.json(dbDiagnosisData);
   })
   .catch(err => {
     console.log(err);
@@ -54,18 +53,18 @@ router.get('/:id', (req, res) => {
 /******************/
 
 router.put('/:id', (req, res) => {
-  Client.update(req.body, {
+  Diagnosis.update(req.body, {
     where: {
-      client_id: req.params.id
+      dx_id: req.params.id
     }
   })
-  .then(dbClientData => {
-    console.log(dbClientData);
-    if (!dbClientData[0]) {
-      res.status(404).json({ message: 'No client found' });
+  .then(dbDiagnosisData => {
+    console.log(dbDiagnosisData);
+    if (!dbDiagnosisData[0]) {
+      res.status(404).json({ message: 'No diagnosis found' });
       return;
     }
-    res.json(dbClientData);
+    res.json(dbDiagnosisData);
   })
   .catch(err => {
     console.log(err);
@@ -78,17 +77,17 @@ router.put('/:id', (req, res) => {
 /******************/
 
 router.delete('/:id', (req, res) => {
-  Client.destroy({
+  Diagnosis.destroy({
     where: {
-      client_id: req.params.id
+      dx_id: req.params.id
     }
   })
-  .then(dbClientData => {
-    if (!dbClientData) {
-      res.status(404).json({ message: 'No client found '});
+  .then(dbDiagnosisData => {
+    if (!dbDiagnosisData) {
+      res.status(404).json({ message: 'No diagnosis found '});
       return;
     }
-    res.json(dbClientData);
+    res.json(dbDiagnosisData);
   })
   .catch(err => {
     console.log(err);

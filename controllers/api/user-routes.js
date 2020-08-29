@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User, Access } = require('../../models');
+const { User, Access, Client, Record } = require('../../models');
+const sequelize = require('../../config/connection');
 
 /******************/
 /***** CREATE *****/
@@ -14,17 +15,70 @@ router.post('/', (req, res) => {
   });
 });
 
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      username: req.body.username
+    }
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: 'No user found with that username' });
+      return;
+    }
+    // verify user
+    const validPassword = dbUserData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password!' });
+      return;
+    }
+    // create session and send response back
+    req.session.save(() => {
+      req.session.user_id = dbUserData.user_id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
+  });
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => res.status(204).end());
+  } else {
+    res.status(404).end();
+  }
+});
+
 /******************/
 /****** READ ******/
 /******************/
 
 router.get('/', (req, res) => {
   User.findAll({
-    //attributes: { exclude: ['password'] },
+    attributes: [
+      'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+        '(SELECT COUNT(DISTINCT record.client_id) FROM record WHERE user.user_id = record.user_id)'
+      ), 'clients_nb']
+    ],
+    order: ['last_name'],
+    exclude: ['password'],
     include: [
       {
         model: Access,
         attributes: ['access_id', 'access_type']
+      },
+      {
+        model: Client,
+        attributes: [
+          'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+          '(SELECT COUNT(*) FROM record WHERE clients.client_id = record.client_id)'
+          ), 'records_nb']
+        ],
+        through: {
+          model: Record,
+          attributes: ['date']
+        }
       }
     ]
   })
@@ -37,7 +91,14 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   User.findOne({
-    //attributes: { exclude: ['password'] },
+    attributes: {
+      include: [
+        'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+          '(SELECT COUNT(DISTINCT record.client_id) FROM record WHERE user.user_id = record.user_id)'
+        ), 'clients_nb']
+      ],
+      exclude: ['password']
+    },
     where: {
       user_id: req.params.id
     },
@@ -45,6 +106,18 @@ router.get('/:id', (req, res) => {
       {
         model: Access,
         attributes: ['access_id', 'access_type']
+      },
+      {
+        model: Client,
+        attributes: [
+          'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+          '(SELECT COUNT(*) FROM record WHERE clients.client_id = record.client_id)'
+          ), 'records_nb']
+        ],
+        through: {
+          model: Record,
+          attributes: ['date']
+        }
       }
     ]
   })
@@ -67,6 +140,7 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   User.update(req.body, {
+    individualHooks: true,
     where: {
       user_id: req.params.id
     }
