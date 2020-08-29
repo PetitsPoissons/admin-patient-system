@@ -32,8 +32,22 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
-    res.json({ user: dbUserData, message: 'You are now logged in!' });
+    // create session and send response back
+    req.session.save(() => {
+      req.session.user_id = dbUserData.user_id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
   });
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => res.status(204).end());
+  } else {
+    res.status(404).end();
+  }
 });
 
 /******************/
@@ -74,11 +88,6 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-attributes: {
-  include: [
-    [sequelize.fn('COUNT', sequelize.col('hats')), 'n_hats']
-  ]
-}
 
 router.get('/:id', (req, res) => {
   User.findOne({
