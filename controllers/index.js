@@ -10,7 +10,7 @@ router.use('/api', apiRoutes);
 router.use('/users', userRoutes);
 router.use('/documents', documentRoutes);
 router.use('/', homeRoutes);
-router.use('/documents', procedureRoutes);
+router.use('/procedures', procedureRoutes);
 
 router.use((req, res) => {
   res.status(404).end();

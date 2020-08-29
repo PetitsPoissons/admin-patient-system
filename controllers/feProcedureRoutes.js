@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
         attributes: ['procedure_name', 'procedure_desc', 'cpt_code', 'duration']
     })
     .then(dbProcedureData => {
-        console.log(dbProcedureData);
+        const procedures = dbProcedureData.map(procedure => procedure.get({ plain: true }));
+    res.render('procedures', { procedures });
     })
     .catch(err => {
         console.log(err);
