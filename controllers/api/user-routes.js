@@ -43,7 +43,6 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  console.log('inside API/USERS/LOGOUT');
   if (req.session.loggedIn) {
     req.session.destroy(() => res.status(204).end());
   } else {
@@ -89,11 +88,6 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-attributes: {
-  include: [
-    [sequelize.fn('COUNT', sequelize.col('hats')), 'n_hats']
-  ]
-}
 
 router.get('/:id', (req, res) => {
   User.findOne({
