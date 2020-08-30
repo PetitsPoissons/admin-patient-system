@@ -1,21 +1,21 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Document extends Model {}
+class Form extends Model {}
 
-Document.init(
+Form.init(
   {
-    document_id: {
+    form_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    document_name: {
+    form_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    document_desc: {
+    form_desc: {
       type: DataTypes.TEXT
     }
   },
@@ -23,8 +23,8 @@ Document.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'document'
+    modelName: 'form'
   }  
 );
 
-module.exports = Document;
+module.exports = Form;

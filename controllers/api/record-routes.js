@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Record, User, Client, Procedure, Document } = require('../../models');
+const { Record, Form, Treatment } = require('../../models');
 
 /******************/
 /***** CREATE *****/
@@ -20,24 +20,28 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
   Record.findAll({
+    attributes: ['record_date'],
     include: [
       {
-        model: User,
-        attributes: ['first_name', 'last_name']
+        model: Form,
+        attributes: ['form_name']
       },
       {
-        model: Client,
-        attributes: ['first_name', 'last_name']
-      },
-      {
-        model: Procedure,
-        attributes: ['procedure_name']
-      },
-      {
-        model: Document,
-        attributes: ['document_name']
-      }
-    ]
+        model: Treatment,
+        attributes: ['tx_date']
+      }]
+        // {
+        //   model: Client,
+        //   attributes: ['first_name', 'last_name']
+        //   // include: [{
+        //   //   model: Diagnosis,
+        //   //   attributes: ['dx_code', 'dx_name'],
+        //   //   through: {
+        //   //     model: IsDiagnosed,
+        //   //     attributes: ['dx_date']
+        //   //   }
+        //   // }]
+        // }
   })
   .then(dbRecordData => res.json(dbRecordData))
   .catch(err => {
@@ -47,32 +51,36 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Record.findOne({
+  Record.findAll({
     where: {
-      id: req.params.id
+      record_id: req.params.id
     },
+    attributes: ['record_date'],
     include: [
       {
-        model: User,
-        attributes: ['first_name', 'last_name']
+        model: Form,
+        attributes: ['form_name']
       },
       {
-        model: Client,
-        attributes: ['first_name', 'last_name']
-      },
-      {
-        model: Procedure,
-        attributes: ['procedure_name']
-      },
-      {
-        model: Document,
-        attributes: ['document_name']
-      }
-    ]
+        model: Treatment,
+        attributes: ['tx_date']
+      }]
+        // {
+        //   model: Client,
+        //   attributes: ['first_name', 'last_name']
+        //   // include: [{
+        //   //   model: Diagnosis,
+        //   //   attributes: ['dx_code', 'dx_name'],
+        //   //   through: {
+        //   //     model: IsDiagnosed,
+        //   //     attributes: ['dx_date']
+        //   //   }
+        //   // }]
+        // }
   })
   .then(dbRecordData => {
     if (!dbRecordData) {
-      res.status(404).json({ message: 'No record found' });
+      res.status(404).json({ message: "This treatment was not found" });
       return;
     }
     res.json(dbRecordData)
@@ -90,12 +98,12 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   Record.update(req.body, {
     where: {
-      id: req.params.id
+      record_id: req.params.id
     }
   })
   .then(dbRecordData => {
     if (!dbRecordData[0]) {
-      res.status(404).json({ message: 'No record found' });
+      res.status(404).json({ message: 'This record was not found' });
       return;
     }
     res.json(dbRecordData);
@@ -113,12 +121,12 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   Record.destroy({
     where: {
-      id: req.params.id
+      record_id: req.params.id
     }
   })
   .then(dbRecordData => {
     if (!dbRecordData) {
-      res.status(404).json({ message: 'No record found' });
+      res.status(404).json({ message: 'This record was not found' });
       return;
     }
     res.json(dbRecordData);

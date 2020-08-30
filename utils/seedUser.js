@@ -1,6 +1,5 @@
 [
   {
-    "user_id": "5f4837ebfc13ae64c9000000",
     "username": "jraggitt0",
     "password": "JEdnDR",
     "email": "jraggitt0@house.gov",
@@ -22,7 +21,6 @@
     "npi_number":"463012373"
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000001",
     "username": "pwaszkiewicz1",
     "password": "uaku5ENlXpi",
     "email": "pwaszkiewicz1@sciencedaily.com",
@@ -44,7 +42,6 @@
     "npi_number": null
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000002",
     "username": "rbullcock2",
     "password": "o6rGQtfxWM",
     "email": "rbullcock2@trellian.com",
@@ -66,7 +63,6 @@
     "npi_number": null
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000003",
     "username": "cbartczak3",
     "password": "szdfzxLQJgN",
     "email": "cbartczak3@mysql.com",
@@ -88,7 +84,6 @@
     "npi_number": "975849028"
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000004",
     "username": "ppurvis4",
     "password": "0ZCBIrVMo",
     "email": "ppurvis4@bluehost.com",
@@ -110,7 +105,6 @@
     "npi_number": null
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000005",
     "username": "dsmalman5",
     "password": "Z0httuw",
     "email": "dsmalman5@soup.io",
@@ -132,7 +126,6 @@
     "npi_number": null
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000006",
     "username": "dkilfoyle6",
     "password": "40DguSKZh",
     "email": "dkilfoyle6@exblog.jp",
@@ -154,7 +147,6 @@
     "npi_number": null
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000007",
     "username": "ntillot7",
     "password": "YjJkr4S6IOOl",
     "email": "ntillot7@narod.ru",
@@ -176,7 +168,6 @@
     "npi_number":null
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000008",
     "username": "ssantarelli8",
     "password": "I7CbJL",
     "email": "ssantarelli8@woothemes.com",
@@ -198,7 +189,6 @@
     "npi_number": null
   },
   {
-    "user_id": "5f4837ebfc13ae64c9000009",
     "username": "jmacmenamin9",
     "password": "EtjRWGeBKQ",
     "email": "jmacmenamin9@ed.gov",
@@ -217,6 +207,48 @@
     "license_number": "EQm0VRJY",
     "license_type": "aakhyopzxekievny",
     "license_expiration": "2019-01-29 02:10:24",
+    "npi_number": null
+  },
+  {
+    "username": "username1",
+    "password": "password1",
+    "email": "janedoe@shrinko.net",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "dob": "1973-06-14 03:25:09",
+    "ssn": "427-94-7198",
+    "primary_phone": "213-636-5452",
+    "alt_phone": null,
+    "street_address": "70 Ivan Hill",
+    "city": "Waterbury",
+    "state": "Connecticut",
+    "zip": "06721",
+    "access_id": 1,
+    "active":true,
+    "license_number": "EQm0VRJY",
+    "license_type": "aakhyopzxekievny",
+    "license_expiration": "2029-01-29 02:10:24",
+    "npi_number": null
+  },
+  {
+    "username": "username2",
+    "password": "password2",
+    "email": "johndoe@shrinko.net",
+    "first_name": "John",
+    "last_name": "Doe",
+    "dob": "1973-06-13 03:25:09",
+    "ssn": "627-94-7198",
+    "primary_phone": "413-636-5452",
+    "alt_phone": null,
+    "street_address": "70 Ivan Hill",
+    "city": "Sodabury",
+    "state": "Connecticut",
+    "zip": "06721",
+    "access_id": 2,
+    "active":true,
+    "license_number": "EQm0VRJY",
+    "license_type": "aakhyopzxekievny",
+    "license_expiration": "2029-01-30 02:10:24",
     "npi_number": null
   }
 ]

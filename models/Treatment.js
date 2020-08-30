@@ -1,25 +1,25 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Record extends Model {}
+class Treatment extends Model {}
 
-Record.init(
+Treatment.init(
   {
-    record_id: {
+    tx_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    form_id: {
+    procedure_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    tx_id: {
+    relation_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    record_date: {
+    tx_date: {
       type: DataTypes.DATE,
       allowNull: false
     }
@@ -28,8 +28,8 @@ Record.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'record'
+    modelName: 'treatment'
   }
 );
 
-module.exports = Record;
+module.exports = Treatment;
