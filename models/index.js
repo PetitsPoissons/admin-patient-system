@@ -1,122 +1,139 @@
-const User = require('./User');
 const Access = require('./Access');
+const User = require('./User');
 const Client = require('./Client');
-const Procedure = require('./Procedure');
-const Document = require('./Document');
-const Diagnosis = require('./Diagnosis');
-const Record = require('./Record');
-const IsDiagnosed = require('./IsDiagnosed');
+// const Diagnosis = require('./Diagnosis');
+// const IsDiagnosed = require('./IsDiagnosed');
+const Relation = require('./Relation');
+// const Procedure = require('./Procedure');
+// const Treatment = require('./Treatment');
+// const Form = require('./Form');
+// const Record = require('./Record');
 
-// create associations between User and Access
+/**********************************/
+/***** MANY-TO-MANY RELATIONS *****/
+/**********************************/
+
+User.belongsToMany(Client, {
+  through: Relation,
+  foreignKey: 'user_id'
+});
+Client.belongsToMany(User, {
+  through: Relation,
+  foreignKey: 'client_id'
+})
+
+// Diagnosis.belongsToMany(Client, {
+//   through: IsDiagnosed,
+//   foreignKey: 'dx_id'
+// });
+// Client.belongsToMany(Diagnosis, {
+//   through: IsDiagnosed,
+//   foreignKey: 'client_id'
+// });
+
+// Procedure.belongsToMany(Relation, {
+//   through: Treatment,
+//   foreignKey: 'procedure_id'
+// });
+// Relation.belongsToMany(Procedure, {
+//   through: Treatment,
+//   foreignKey: 'relation_id'
+// });
+
+// Treatment.belongsToMany(Form, {
+//   through: Record,
+//   foreignKey: 'tx_id'
+// });
+// Form.belongsToMany(Treatment, {
+//   through: Record,
+//   foreignKey: 'form_id'
+// });
+
+
+/*********************************/
+/***** ONE-TO-MANY RELATIONS *****/
+/*********************************/
+  // onDelete: 'CASCADE',
+  // onUpdate: 'CASCADE'
+  // ????????????????????
+
+// one access level pertains to many users
 Access.hasMany(User, {
   foreignKey: 'access_id'
 });
+// one user has exactly one access level
 User.belongsTo(Access, {
   foreignKey: 'access_id'
 });
 
-// create associations between User and Client - this allows 
-// both the User and the Client models to query each other's
-// information in the context of a record
-User.belongsToMany(Client, {
-  through: Record,
-  foreignKey: 'user_id'
-});
-Client.belongsToMany(User, {
-  through: Record,
+// Diagnosis.hasMany(IsDiagnosed, {
+//   foreignKey: 'dx_id'
+// });
+// IsDiagnosed.belongsTo(Diagnosis, {
+//   foreignKey: 'dx_id'
+// });
+
+// Client.hasMany(IsDiagnosed, {
+//   foreignKey: 'client_id'
+// });
+// IsDiagnosed.belongsTo(Client, {
+//   foreignKey: 'client_id'
+// });
+
+Client.hasMany(Relation, {
   foreignKey: 'client_id'
-})
-
-// create associations between User and Record
-User.hasMany(Record, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
 });
-Record.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-});
-
-// create associations between Client and Record
-Client.hasMany(Record, {
-  foreignKey: 'client_id',
-  onDelete: 'CASCADE'
-});
-Record.belongsTo(Client, {
-  foreignKey: 'client_id',
-  onDelete: 'CASCADE'
-});
-
-// create associations between Procedure and Record
-Procedure.hasMany(Record, {
-  foreignKey: 'procedure_id',
-  onDelete: 'CASCADE'
-});
-Record.belongsTo(Procedure, {
-  foreignKey: 'procedure_id',
-  onDelete: 'CASCADE'
-});
-
-// create associations between Document and Record
-Document.hasMany(Record, {
-  foreignKey: 'document_id',
-  onDelete: 'CASCADE'
-});
-Record.belongsTo(Document, {
-  foreignKey:'document_id',
-  onDelete: 'CASCADE'
-});
-
-// create associations between User and Client - this allows 
-// both the User and the Client models to query each other's
-// information in the context of a diagnosis made (IsDiagnosed model)
-User.belongsToMany(Client, {
-  through: IsDiagnosed,
-  foreignKey: 'user_id'
-});
-Client.belongsToMany(User, {
-  through: IsDiagnosed,
+Relation.belongsTo(Client, {
   foreignKey: 'client_id'
 });
 
-// create associations between User and IsDiagnosed
-User.hasMany(IsDiagnosed, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+User.hasMany(Relation, {
+  foreignKey: 'user_id'
 });
-IsDiagnosed.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+Relation.belongsTo(User, {
+  foreignKey: 'user_id'
 });
 
-// create associations between Client and IsDiagnosed
-Client.hasMany(IsDiagnosed, {
-  foreignKey: 'client_id',
-  onDelete: 'CASCADE'
-});
-IsDiagnosed.belongsTo(Client, {
-  foreignKey: 'client_id',
-  onDelete: 'CASCADE'
-});
+// Relation.hasMany(Treatment, {
+//   foreignKey: 'relation_id'
+// });
+// Treatment.belongsTo(Relation, {
+//   foreignKey: 'relation_id'
+// });
 
-// create associated between diagnosis and isdiagnosed (similar to procedure and record)
+// Procedure.hasMany(Treatment, {
+//   foreignKey: 'procedure_id'
+// });
+// Treatment.belongsTo(Procedure, {
+//   foreignKey: 'procedure_id'
+// });
 
-Diagnosis.hasMany(IsDiagnosed, {
-  foreignKey: 'dx_id',
-  onDelete: 'CASCADE'
-});
-IsDiagnosed.belongsTo(Diagnosis, {
-  foreignKey: 'dx_id',
-  onDelete: 'CASCADE'
-});
+// Treatment.hasMany(Record, {
+//   foreignKey: 'tx_id'
+// });
+// Record.belongsTo(Treatment, {
+//   foreignKey:'tx_id'
+// });
 
-module.exports = {
-  User,
-  Access,
-  Client,
-  Procedure,
-  Document,
-  Record,
-  Diagnosis,
-  IsDiagnosed
-};
+// Form.hasMany(Record, {
+//   foreignKey: 'form_id'
+// });
+// Record.belongsTo(Form, {
+//   foreignKey:'form_id'
+// });
+
+
+
+// module.exports = {
+//   Access,
+//   User,
+//   Client,
+//   Diagnosis,
+//   IsDiagnosed,
+//   Relation,
+//   Procedure,
+//   Treatment,
+//   Form,
+//   Record
+// };
+module.exports = { Access, User, Client, Relation };

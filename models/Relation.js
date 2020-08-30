@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Record extends Model {}
+class Relation extends Model {}
 
-Record.init(
+Relation.init(
   {
-    id: {
+    relation_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -27,32 +27,20 @@ Record.init(
         key: 'client_id'
       }
     },
-    date: {
+    start_date: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    procedure_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'procedure',
-        key: 'procedure_id'
-      }
-    },
-    document_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'document',
-        key: 'document_id'
-      }
+    end_date: {
+      type: DataTypes.DATE
     }
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'record'
+    modelName: 'relation'
   }
 );
 
-module.exports = Record;
+module.exports = Relation;

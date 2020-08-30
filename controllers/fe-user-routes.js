@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User, Access } = require('../models');
+const { User, Access, Client, Relation } = require('../models');
 
 // display all users
 router.get('/', (req, res) => {
@@ -11,7 +11,8 @@ router.get('/', (req, res) => {
         model: Access,
         attributes: ['access_type']
       }
-    ]
+    ],
+    order: ['last_name']
   })
   .then(dbUserData => {
     const users = dbUserData.map(user => user.get({ plain: true }));
@@ -28,11 +29,10 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: {
       include: [
-        'first_name', 'last_name', 'dob', 'ssn', 'username', 'password', 'active', 'email', 'primary_phone', 'alt_phone', 'street_address', 'city', 'state', 'zip', '', , '', '', [sequelize.literal(
-          '(SELECT COUNT(DISTINCT record.client_id) FROM record WHERE user.user_id = record.user_id)'
+        'first_name', 'last_name', 'dob', 'ssn', 'username', 'password', 'active', 'email', 'primary_phone', 'alt_phone', 'street_address', 'city', 'state', 'zip', [sequelize.literal(
+          '(SELECT COUNT(DISTINCT relation.client_id) FROM relation WHERE user.user_id = relation.user_id)'
         ), 'clients_nb']
-      ],
-      //exclude: ['password']
+      ]
     },
     where: {
       user_id: req.params.id
@@ -44,14 +44,10 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Client,
-        attributes: [
-          'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
-          '(SELECT COUNT(*) FROM record WHERE clients.client_id = record.client_id)'
-          ), 'records_nb']
-        ],
+        attributes: ['first_name', 'last_name', 'primary_phone', 'alt_phone', 'email'],
         through: {
-          model: Record,
-          attributes: ['date']
+          model: Relation,
+          attributes: ['start_date', 'end_date']
         }
       }
     ]
