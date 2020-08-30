@@ -2,15 +2,16 @@ const router = require('express').Router();
 
 const apiRoutes = require('./api');
 
-const startRoutes = require('./fe-start-routes');
-const userRoutes = require('./fe-user-routes');
-const formRoutes = require('./fe-form-routes');
-const procedureRoutes = require('./ProcedureRoutes');
-const diagnosisRoutes = require('./DiagnosisRoutes');
+const startRoutes = require('./feStartRoutes');
+const userRoutes = require('./feUserRoutes');
+const formRoutes = require('./feFormRoutes');
+const procedureRoutes = require('./feProcedureRoutes');
+const diagnosisRoutes = require('./feDiagnosisRoutes');
 
 router.use('/api', apiRoutes);
 router.use('/', startRoutes);
 router.use('/users', userRoutes);
+router.use('/forms', formRoutes);
 router.use('/procedures', procedureRoutes);
 router.use('/diagnosis', diagnosisRoutes);
 
