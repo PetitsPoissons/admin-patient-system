@@ -11,25 +11,21 @@ IsDiagnosed.init(
             primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
-            type: DataTypes.UUID,
+        relation_id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-              model: 'user',
-              key: 'user_id'
-            }
-        },
-        client_id: {
-            type: DataTypes.UUID,
-            allowNull: false,
-            references: {
-              model: 'client',
-              key: 'client_id'
+              model: 'relation',
+              key: 'relation_id'
             }
         },
         dx_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            references: {
+                model: 'diagnosis',
+                key: 'dx_id'
+              }
         },
         dx_date: {
             type: DataTypes.STRING,
@@ -40,7 +36,7 @@ IsDiagnosed.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'isdiagnosed'
+        modelName: 'is_diagnosed'
     }
 );
 

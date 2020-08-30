@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// const { Relation, User, Client, Procedure, Access, Diagnosis, IsDiagnosed, Treatment, Form, Record } = require('../../models');
 const { Relation, User, Client, Access } = require('../../models');
 
 /******************/
@@ -21,10 +20,11 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
   Relation.findAll({
+    attributes: ['relation_id', 'user_id', 'client_id'],
     include: [
       {
         model: User,
-        attributes: ['first_name', 'last_name'],
+        attributes: ['user_id', 'first_name', 'last_name'],
         include: [{
             model: Access,
             attributes: ['access_type']
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
       },
       {
         model: Client,
-        attributes: ['first_name', 'last_name']
+        attributes: ['client_id', 'first_name', 'last_name']
         // include: [{
         //     model: Diagnosis,
         //     attributes: ['dx_code', 'dx_name'],

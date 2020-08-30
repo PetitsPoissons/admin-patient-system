@@ -1,8 +1,8 @@
 const Access = require('./Access');
 const User = require('./User');
 const Client = require('./Client');
-// const Diagnosis = require('./Diagnosis');
-// const IsDiagnosed = require('./IsDiagnosed');
+const Diagnosis = require('./Diagnosis');
+const IsDiagnosed = require('./IsDiagnosed');
 const Relation = require('./Relation');
 const Procedure = require('./Procedure');
 const Treatment = require('./Treatment');
@@ -22,14 +22,14 @@ Client.belongsToMany(User, {
   foreignKey: 'client_id'
 })
 
-// Diagnosis.belongsToMany(Client, {
-//   through: IsDiagnosed,
-//   foreignKey: 'dx_id'
-// });
-// Client.belongsToMany(Diagnosis, {
-//   through: IsDiagnosed,
-//   foreignKey: 'client_id'
-// });
+Diagnosis.belongsToMany(Relation, {
+  through: IsDiagnosed,
+  foreignKey: 'dx_id'
+});
+Relation.belongsToMany(Diagnosis, {
+  through: IsDiagnosed,
+  foreignKey: 'relation_id'
+});
 
 Procedure.belongsToMany(Relation, {
   through: Treatment,
@@ -64,19 +64,19 @@ User.belongsTo(Access, {
   foreignKey: 'access_id'
 });
 
-// Diagnosis.hasMany(IsDiagnosed, {
-//   foreignKey: 'dx_id'
-// });
-// IsDiagnosed.belongsTo(Diagnosis, {
-//   foreignKey: 'dx_id'
-// });
+Diagnosis.hasMany(IsDiagnosed, {
+  foreignKey: 'dx_id'
+});
+IsDiagnosed.belongsTo(Diagnosis, {
+  foreignKey: 'dx_id'
+});
 
-// Client.hasMany(IsDiagnosed, {
-//   foreignKey: 'client_id'
-// });
-// IsDiagnosed.belongsTo(Client, {
-//   foreignKey: 'client_id'
-// });
+Relation.hasMany(IsDiagnosed, {
+  foreignKey: 'relation_id'
+});
+IsDiagnosed.belongsTo(Relation, {
+  foreignKey: 'relation_id'
+});
 
 Client.hasMany(Relation, {
   foreignKey: 'client_id'
@@ -121,13 +121,12 @@ Record.belongsTo(Form, {
 });
 
 
-
 module.exports = {
   Access,
   User,
   Client,
-//   Diagnosis,
-//   IsDiagnosed,
+  Diagnosis,
+  IsDiagnosed,
   Relation,
   Procedure,
   Treatment,

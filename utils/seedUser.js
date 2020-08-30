@@ -1,5 +1,6 @@
 [
   {
+    "user_id": "8f95efc0-8942-43cc-8b59-83fd92690431",
     "username": "jraggitt0",
     "password": "JEdnDR",
     "email": "jraggitt0@house.gov",
@@ -21,6 +22,7 @@
     "npi_number":"463012373"
   },
   {
+    "user_id": "19065225-2b66-4cd7-a0ce-4c6c8436d526",
     "username": "pwaszkiewicz1",
     "password": "uaku5ENlXpi",
     "email": "pwaszkiewicz1@sciencedaily.com",
@@ -42,6 +44,7 @@
     "npi_number": null
   },
   {
+    "user_id": "1ff33ce3-dc54-4cbe-9864-68c0da2c6915",
     "username": "rbullcock2",
     "password": "o6rGQtfxWM",
     "email": "rbullcock2@trellian.com",
@@ -63,6 +66,7 @@
     "npi_number": null
   },
   {
+    "user_id": "6c808d65-ff34-4e35-a87c-cbe3724cfef9",
     "username": "cbartczak3",
     "password": "szdfzxLQJgN",
     "email": "cbartczak3@mysql.com",
@@ -84,6 +88,7 @@
     "npi_number": "975849028"
   },
   {
+    "user_id": "75981688-b1a5-4ed8-98d6-83950f103eff",
     "username": "ppurvis4",
     "password": "0ZCBIrVMo",
     "email": "ppurvis4@bluehost.com",
@@ -105,6 +110,7 @@
     "npi_number": null
   },
   {
+    "user_id": "1abeab61-d5a5-4e88-be88-e4d0b6889080",
     "username": "dsmalman5",
     "password": "Z0httuw",
     "email": "dsmalman5@soup.io",
@@ -126,6 +132,7 @@
     "npi_number": null
   },
   {
+    "user_id": "eeefc9ec-9750-4327-82c3-acc8bf9c7b67",
     "username": "dkilfoyle6",
     "password": "40DguSKZh",
     "email": "dkilfoyle6@exblog.jp",
@@ -147,6 +154,7 @@
     "npi_number": null
   },
   {
+    "user_id": "25a925c0-af1f-45dc-9bb3-aa6ff5a5b340",
     "username": "ntillot7",
     "password": "YjJkr4S6IOOl",
     "email": "ntillot7@narod.ru",
@@ -168,6 +176,7 @@
     "npi_number":null
   },
   {
+    "user_id": "a4694d93-3ccc-4ddf-87de-237da04b04a1",
     "username": "ssantarelli8",
     "password": "I7CbJL",
     "email": "ssantarelli8@woothemes.com",
@@ -189,6 +198,7 @@
     "npi_number": null
   },
   {
+    "user_id": "b5a4a2a9-d732-4546-9df0-548e2df0f044",
     "username": "jmacmenamin9",
     "password": "EtjRWGeBKQ",
     "email": "jmacmenamin9@ed.gov",
@@ -210,6 +220,7 @@
     "npi_number": null
   },
   {
+    "user_id": "1347a651-1918-4fdb-89a5-3a4e2b679fa7",
     "username": "username1",
     "password": "password1",
     "email": "janedoe@shrinko.net",
@@ -231,6 +242,7 @@
     "npi_number": null
   },
   {
+    "user_id": "4396a4c0-8ca7-452a-9999-68ef759cab04",
     "username": "username2",
     "password": "password2",
     "email": "johndoe@shrinko.net",
