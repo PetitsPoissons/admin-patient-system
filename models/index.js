@@ -4,9 +4,9 @@ const Client = require('./Client');
 // const Diagnosis = require('./Diagnosis');
 // const IsDiagnosed = require('./IsDiagnosed');
 const Relation = require('./Relation');
-// const Procedure = require('./Procedure');
-// const Treatment = require('./Treatment');
-// const Form = require('./Form');
+const Procedure = require('./Procedure');
+const Treatment = require('./Treatment');
+const Form = require('./Form');
 // const Record = require('./Record');
 
 /**********************************/
@@ -31,14 +31,14 @@ Client.belongsToMany(User, {
 //   foreignKey: 'client_id'
 // });
 
-// Procedure.belongsToMany(Relation, {
-//   through: Treatment,
-//   foreignKey: 'procedure_id'
-// });
-// Relation.belongsToMany(Procedure, {
-//   through: Treatment,
-//   foreignKey: 'relation_id'
-// });
+Procedure.belongsToMany(Relation, {
+  through: Treatment,
+  foreignKey: 'procedure_id'
+});
+Relation.belongsToMany(Procedure, {
+  through: Treatment,
+  foreignKey: 'relation_id'
+});
 
 // Treatment.belongsToMany(Form, {
 //   through: Record,
@@ -57,11 +57,9 @@ Client.belongsToMany(User, {
   // onUpdate: 'CASCADE'
   // ????????????????????
 
-// one access level pertains to many users
 Access.hasMany(User, {
   foreignKey: 'access_id'
 });
-// one user has exactly one access level
 User.belongsTo(Access, {
   foreignKey: 'access_id'
 });
@@ -94,19 +92,19 @@ Relation.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-// Relation.hasMany(Treatment, {
-//   foreignKey: 'relation_id'
-// });
-// Treatment.belongsTo(Relation, {
-//   foreignKey: 'relation_id'
-// });
+Relation.hasMany(Treatment, {
+  foreignKey: 'relation_id'
+});
+Treatment.belongsTo(Relation, {
+  foreignKey: 'relation_id'
+});
 
-// Procedure.hasMany(Treatment, {
-//   foreignKey: 'procedure_id'
-// });
-// Treatment.belongsTo(Procedure, {
-//   foreignKey: 'procedure_id'
-// });
+Procedure.hasMany(Treatment, {
+  foreignKey: 'procedure_id'
+});
+Treatment.belongsTo(Procedure, {
+  foreignKey: 'procedure_id'
+});
 
 // Treatment.hasMany(Record, {
 //   foreignKey: 'tx_id'
@@ -124,16 +122,15 @@ Relation.belongsTo(User, {
 
 
 
-// module.exports = {
-//   Access,
-//   User,
-//   Client,
+module.exports = {
+  Access,
+  User,
+  Client,
 //   Diagnosis,
 //   IsDiagnosed,
-//   Relation,
-//   Procedure,
-//   Treatment,
-//   Form,
+  Relation,
+  Procedure,
+  Treatment,
+  Form
 //   Record
-// };
-module.exports = { Access, User, Client, Relation };
+};

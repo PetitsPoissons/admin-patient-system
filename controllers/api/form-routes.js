@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Document } = require('../../models');
+const { Form } = require('../../models');
 
 /******************/
 /***** CREATE *****/
 /******************/
 
 router.post('/', (req, res) => {
-  Document.create(req.body)
-  .then(dbDocumentData => res.json(dbDocumentData))
+  Form.create(req.body)
+  .then(dbFormData => res.json(dbFormData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
 /******************/
 
 router.get('/', (req, res) => {
-  Document.findAll()
-    .then(dbDocumentData => res.json(dbDocumentData))
+  Form.findAll()
+    .then(dbFormData => res.json(dbFormData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -28,17 +28,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Document.findOne({
+  Form.findOne({
     where: {
-      document_id: req.params.id
+      form_id: req.params.id
     }
   })
-    .then(dbDocumentData => {
-      if (!dbDocumentData) {
-        res.status(404).json({ message: 'This document was not found' });
+    .then(dbFormData => {
+      if (!dbFormData) {
+        res.status(404).json({ message: 'This form was not found' });
         return;
       }
-      res.json(dbDocumentData);
+      res.json(dbFormData);
     })
     .catch(err => {
       console.log(err);
@@ -51,17 +51,17 @@ router.get('/:id', (req, res) => {
 /******************/
 
 router.put('/:id', (req, res) => {
-  Document.update(req.body, {
+  Form.update(req.body, {
     where: {
-      document_id: req.params.id
+      form_id: req.params.id
     }
   })
-  .then(dbDocumentData => {
-    if (!dbDocumentData[0]) {
-      res.status(404).json({ message: 'This document was not found' });
+  .then(dbFormData => {
+    if (!dbFormData[0]) {
+      res.status(404).json({ message: 'This form was not found' });
       return;
     }
-    res.json(dbDocumentData);
+    res.json(dbFormData);
   })
   .catch(err => {
     console.log(err);
@@ -74,17 +74,17 @@ router.put('/:id', (req, res) => {
 /******************/
 
 router.delete('/:id', (req, res) => {
-  Document.destroy({
+  Form.destroy({
     where: {
-      document_id: req.params.id
+      form_id: req.params.id
     }
   })
-  .then(dbDocumentData => {
-    if (!dbDocumentData) {
-      res.status(404).json({ message: 'This document was not found' });
+  .then(dbFormData => {
+    if (!dbFormData) {
+      res.status(404).json({ message: 'This form was not found' });
       return;
     }
-    res.json(dbDocumentData);
+    res.json(dbFormData);
   })
   .catch(err => {
     console.log(err);

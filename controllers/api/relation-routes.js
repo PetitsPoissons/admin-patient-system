@@ -113,7 +113,7 @@ router.get('/:id', (req, res) => {
   })
   .then(dbRelationData => {
     if (!dbRelationData) {
-      res.status(404).json({ message: 'No relation found' });
+      res.status(404).json({ message: 'This relation was not found' });
       return;
     }
     res.json(dbRelationData)
@@ -136,7 +136,7 @@ router.put('/:id', (req, res) => {
   })
   .then(dbRelationData => {
     if (!dbRelationData[0]) {
-      res.status(404).json({ message: 'No relation found' });
+      res.status(404).json({ message: 'This relation was not found' });
       return;
     }
     res.json(dbRelationData);
@@ -159,7 +159,7 @@ router.delete('/:id', (req, res) => {
   })
   .then(dbRelationData => {
     if (!dbRelationData) {
-      res.status(404).json({ message: 'No relation found' });
+      res.status(404).json({ message: 'This relation was not found' });
       return;
     }
     res.json(dbRelationData);
