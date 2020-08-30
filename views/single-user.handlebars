@@ -15,27 +15,27 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="userDob">Date of Birth</label>
-        <input type="date" class="form-control" id="userDob" value="{{ user.dob }}" />
+        <input type="date" class="form-control" id="userDob" value="{{ user.dob }}" readonly/>
       </div>
       <div class="form-group col-md-6">
         <label for="userSsn">Social Security #</label>
-        <input type="text" class="form-control" id="userSsn" value="{{ user.ssn }}" />
+        <input type="text" class="form-control" id="userSsn" value="{{ user.ssn }}" readonly/>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="userUsername">Username</label>
-        <input type="text" class="form-control" id="userUsername" value="{{ user.username }}" />
+        <input type="text" class="form-control" id="userUsername" value="{{ user.username }}" readonly/>
       </div>
       <div class="form-group col-md-6">
         <label for="userPassword">Password</label>
-        <input type="password" class="form-control" id="userPassword" value="{{ user.password }}" />
+        <input type="password" class="form-control" id="userPassword" value="{{ user.password }}" readonly/>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-2">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="userActive" value="" />
+          <input class="form-check-input" type="checkbox" id="userActive" value="" readonly/>
           <label class="form-check-label" for="userActive">
             Active
           </label>
@@ -43,45 +43,45 @@
       </div>
       <div class="form-group col-md-4">
         <label for="userAccessType">Access Type</label>
-        <input type="text" class="form-control" id="userAccessType" value="{{ user.access.access_type }}" />
+        <input type="text" class="form-control" id="userAccessType" value="{{ user.access.access_type }}" readonly/>
       </div>
       <div class="form-group col-md-6">
         <label for="userAccessDesc">Description</label>
-        <input type="text" class="form-control" id="userAccessDesc" value="{{ user.access.access_desc }}" />
+        <input type="text" class="form-control" id="userAccessDesc" value="{{ user.access.access_desc }}" readonly/>
       </div>
     </div>
     <h3 class="mt-3">Contact Information</h3>
     <p>Edit Contact Information</p>
     <div class="form-group">
       <label for="userEmail">Email</label>
-      <input type="email" class="form-control" id="userEmail" value="{{ user.email }}">
+      <input type="email" class="form-control" id="userEmail" value="{{ user.email }}" readonly/>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="userPrimaryPhone">Mobile Phone</label>
-        <input type="phone" class="form-control" id="userPrimaryPhone" value="{{ user.primary_phone }}" />
+        <input type="phone" class="form-control" id="userPrimaryPhone" value="{{ user.primary_phone }}" readonly/>
       </div>
       <div class="form-group col-md-6">
         <label for="userAltPhone">Other Phone</label>
-        <input type="phone" class="form-control" id="userAltPhone" value="{{ user.alt_phone }}" />
+        <input type="phone" class="form-control" id="userAltPhone" value="{{ user.alt_phone }}" readonly/>
       </div>
     </div>
     <div class="form-group">
       <label for="userStreetAddress">Street Address</label>
-      <input type="text" class="form-control" id="userStreetAddress" value="{{ user.street_address }}">
+      <input type="text" class="form-control" id="userStreetAddress" value="{{ user.street_address }}" readonly/>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="userCity">City</label>
-        <input type="text" class="form-control" id="userCity" value="{{ user.city }}">
+        <input type="text" class="form-control" id="userCity" value="{{ user.city }}" readonly/>
       </div>
       <div class="form-group col-md-4">
         <label for="userState">State</label>
-        <input type="text" class="form-control" id="userState" value="{{ user.state }}">
+        <input type="text" class="form-control" id="userState" value="{{ user.state }}" readonly/>
       </div>
       <div class="form-group col-md-2">
         <label for="userZip">Zip</label>
-        <input type="text" class="form-control" id="userZip" value="{{ user.zip }}">
+        <input type="text" class="form-control" id="userZip" value="{{ user.zip }}" readonly/>
       </div>
     </div>
     <h3 class="mt-3">Clinician Information</h3>
@@ -89,19 +89,19 @@
     <div class="form-row">
       <div class="form-group col-md-3">
         <label for="userLicenseNb">License #</label>
-        <input type="text" class="form-control" id="userLicenseNb" value="{{ user.license_number }}">
+        <input type="text" class="form-control" id="userLicenseNb" value="{{ user.license_number }}" readonly/>
       </div>
       <div class="form-group col-md-3">
         <label for="userLicenseType">License type</label>
-        <input type="text" class="form-control" id="userLicenseType" value="{{ user.license_type }}">
+        <input type="text" class="form-control" id="userLicenseType" value="{{ user.license_type }}" readonly/>
       </div>
       <div class="form-group col-md-3">
         <label for="userLicenseType">License Expiration</label>
-        <input type="date" class="form-control" id="userLicenseType" value="{{ user.license_expiration }}">
+        <input type="date" class="form-control" id="userLicenseType" value="{{ user.license_expiration }}" readonly/>
       </div>
       <div class="form-group col-md-3">
         <label for="userNpiNb">NPI #</label>
-        <input type="text" class="form-control" id="userNpiNb" value="{{ user.npi_number }}">
+        <input type="text" class="form-control" id="userNpiNb" value="{{ user.npi_number }}" readonly/>
       </div>
     </div>
     <div class="form-row">

@@ -7,7 +7,7 @@ const Relation = require('./Relation');
 const Procedure = require('./Procedure');
 const Treatment = require('./Treatment');
 const Form = require('./Form');
-// const Record = require('./Record');
+const Record = require('./Record');
 
 /**********************************/
 /***** MANY-TO-MANY RELATIONS *****/
@@ -40,14 +40,14 @@ Relation.belongsToMany(Procedure, {
   foreignKey: 'relation_id'
 });
 
-// Treatment.belongsToMany(Form, {
-//   through: Record,
-//   foreignKey: 'tx_id'
-// });
-// Form.belongsToMany(Treatment, {
-//   through: Record,
-//   foreignKey: 'form_id'
-// });
+Treatment.belongsToMany(Form, {
+  through: Record,
+  foreignKey: 'tx_id'
+});
+Form.belongsToMany(Treatment, {
+  through: Record,
+  foreignKey: 'form_id'
+});
 
 
 /*********************************/
@@ -106,19 +106,19 @@ Treatment.belongsTo(Procedure, {
   foreignKey: 'procedure_id'
 });
 
-// Treatment.hasMany(Record, {
-//   foreignKey: 'tx_id'
-// });
-// Record.belongsTo(Treatment, {
-//   foreignKey:'tx_id'
-// });
+Treatment.hasMany(Record, {
+  foreignKey: 'tx_id'
+});
+Record.belongsTo(Treatment, {
+  foreignKey:'tx_id'
+});
 
-// Form.hasMany(Record, {
-//   foreignKey: 'form_id'
-// });
-// Record.belongsTo(Form, {
-//   foreignKey:'form_id'
-// });
+Form.hasMany(Record, {
+  foreignKey: 'form_id'
+});
+Record.belongsTo(Form, {
+  foreignKey:'form_id'
+});
 
 
 
@@ -131,6 +131,6 @@ module.exports = {
   Relation,
   Procedure,
   Treatment,
-  Form
-//   Record
+  Form,
+  Record
 };

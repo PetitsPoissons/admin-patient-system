@@ -5,46 +5,23 @@ class Record extends Model {}
 
 Record.init(
   {
-    id: {
+    record_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    user_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: 'user',
-        key: 'user_id'
-      }
-    },
-    client_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: 'client',
-        key: 'client_id'
-      }
-    },
-    date: {
-      type: DataTypes.DATE,
+    form_id: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    procedure_id: {
+    tx_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'procedure',
-        key: 'procedure_id'
-      }
+      allowNull: false
     },
-    document_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'document',
-        key: 'document_id'
-      }
+    record_date: {
+      type: DataTypes.DATE,
+      allowNull: false
     }
   },
   {
