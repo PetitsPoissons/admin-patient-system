@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { IsDiagnosed, User, Client, Diagnosis } = require('../../models');
+const { IsDiagnosed, User, Client, Relation, Diagnosis } = require('../../models');
 
 /******************/
 /***** CREATE *****/
@@ -19,19 +19,24 @@ router.post('/', (req, res) => {
 /******************/
 
 router.get('/', (req, res) => {
-    IsDiagnosed.findAll({
+  IsDiagnosed.findAll({
+    attributes: ['id', 'relation_id', 'dx_id', 'dx_date'],
     include: [
       {
-        model: User,
-        attributes: ['first_name', 'last_name']
-      },
-      {
-        model: Client,
-        attributes: ['first_name', 'last_name']
+        model: Relation,
+        attributes: ['relation_id', 'start_date', 'end_date'],
+        include: [{
+          model: User,
+          attributes: ['user_id', 'first_name', 'last_name']
+        },
+        {
+          model: Client,
+          attributes: ['client_id', 'first_name', 'last_name']
+        }]
       },
       {
         model: Diagnosis,
-        attributes: ['dx_name']
+        attributes: ['dx_id', 'dx_name', 'dx_code', 'dx_desc']
       }
     ]
   })
@@ -47,18 +52,23 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
+    attributes: ['id', 'relation_id', 'dx_id', 'dx_date'],
     include: [
       {
-        model: User,
-        attributes: ['first_name', 'last_name']
-      },
-      {
-        model: Client,
-        attributes: ['first_name', 'last_name']
+        model: Relation,
+        attributes: ['relation_id', 'start_date', 'end_date'],
+        include: [{
+          model: User,
+          attributes: ['user_id', 'first_name', 'last_name']
+        },
+        {
+          model: Client,
+          attributes: ['client_id', 'first_name', 'last_name']
+        }]
       },
       {
         model: Diagnosis,
-        attributes: ['dx_name']
+        attributes: ['dx_id', 'dx_name', 'dx_code', 'dx_desc']
       }
     ]
   })

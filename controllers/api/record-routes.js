@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
   Record.findAll({
-    attributes: ['record_date'],
+    attributes: ['record_id', 'record_date'],
     include: [
       {
         model: Form,

@@ -8,8 +8,8 @@ const procedureRoutes = require('./procedure-routes.js');
 const txRoutes = require('./treatment-routes.js');
 const formRoutes = require('./form-routes.js');
 const recordRoutes = require('./record-routes.js');
-
-// const diagnosisRoutes = require('./diagnosis-routes.js');
+const diagnosisRoutes = require('./diagnosis-routes.js');
+const isDiagnosedRoutes = require('./isdiagnosed-routes.js');
 
 router.use('/users', userRoutes);
 router.use('/access', accessRoutes);
@@ -19,7 +19,7 @@ router.use('/procedures', procedureRoutes);
 router.use('/tx', txRoutes);
 router.use('/forms', formRoutes);
 router.use('/records', recordRoutes);
-
-// router.use('/diagnosis', diagnosisRoutes);
+router.use('/dx', diagnosisRoutes);
+router.use('/dxed', isDiagnosedRoutes);
 
 module.exports = router;

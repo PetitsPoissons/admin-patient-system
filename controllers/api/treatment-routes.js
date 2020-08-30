@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
   Treatment.findAll({
-    attributes: ['tx_date'],
+    attributes: ['tx_id', 'tx_date'],
     include: [
       {
         model: Relation,
