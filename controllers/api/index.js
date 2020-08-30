@@ -6,7 +6,7 @@ const clientRoutes = require('./client-routes.js');
 const procedureRoutes = require('./procedure-routes.js');
 const documentRoutes = require('./document-routes.js');
 const recordRoutes = require('./record-routes.js');
-// const diagnosisRoutes = require('./diagnosis-routes.js');
+const diagnosisRoutes = require('./diagnosisroutes.js');
 
 
 router.use('/users', userRoutes);
@@ -15,7 +15,7 @@ router.use('/clients', clientRoutes);
 router.use('/procedures', procedureRoutes);
 router.use('/documents', documentRoutes);
 router.use('/records', recordRoutes);
-// router.use('/diagnosis', diagnosisRoutes);
+router.use('/diagnosis', diagnosisRoutes);
 
 
 module.exports = router;
