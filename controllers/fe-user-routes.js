@@ -23,4 +23,53 @@ router.get('/', (req, res) => {
   });
 });
 
+// render single-user template
+router.get('/:id', (req, res) => {
+  User.findOne({
+    attributes: {
+      include: [
+        'first_name', 'last_name', 'username', 'password', 'street_address', 'city', 'state', 'zip', 'active', [sequelize.literal(
+          '(SELECT COUNT(DISTINCT record.client_id) FROM record WHERE user.user_id = record.user_id)'
+        ), 'clients_nb']
+      ],
+      //exclude: ['password']
+    },
+    where: {
+      user_id: req.params.id
+    },
+    include: [
+      {
+        model: Access,
+        attributes: ['access_id', 'access_type', 'access_desc']
+      },
+      {
+        model: Client,
+        attributes: [
+          'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+          '(SELECT COUNT(*) FROM record WHERE clients.client_id = record.client_id)'
+          ), 'records_nb']
+        ],
+        through: {
+          model: Record,
+          attributes: ['date']
+        }
+      }
+    ]
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found' });
+      return;
+    }
+    // serialize the data
+    const user = dbUserData.get({ plain: true });
+    // pass data to template
+    res.render('single-user', { user });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
 module.exports = router;
