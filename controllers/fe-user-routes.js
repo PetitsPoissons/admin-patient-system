@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: {
       include: [
-        'first_name', 'last_name', 'username', 'password', 'street_address', 'city', 'state', 'zip', 'active', [sequelize.literal(
+        'first_name', 'last_name', 'dob', 'ssn', 'username', 'password', 'active', 'email', 'primary_phone', 'alt_phone', 'street_address', 'city', 'state', 'zip', '', , '', '', [sequelize.literal(
           '(SELECT COUNT(DISTINCT record.client_id) FROM record WHERE user.user_id = record.user_id)'
         ), 'clients_nb']
       ],
@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Access,
-        attributes: ['access_id', 'access_type', 'access_desc']
+        attributes: ['access_type', 'access_desc']
       },
       {
         model: Client,
