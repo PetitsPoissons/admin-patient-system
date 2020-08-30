@@ -30,7 +30,8 @@
   .DS_Store
   .env
   ```
-  5. Start the server by typing `npm start`
+  5. At the command line, type `npm run seeds` to seed the tables
+  6. Start the server by typing `npm start`
 
   ## Tests
 

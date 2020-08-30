@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Record } = require('../../models');
+const { Record, Form, Treatment } = require('../../models');
 
 /******************/
 /***** CREATE *****/
