@@ -19,6 +19,10 @@ router.post('/login', (req, res) => {
   User.findOne({
     where: {
       username: req.body.username
+    },
+    include: {
+      model: Access,
+      attribute: ['access_id']
     }
   })
   .then(dbUserData => {
@@ -36,7 +40,9 @@ router.post('/login', (req, res) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.user_id;
       req.session.username = dbUserData.username;
+      req.session.access_id = dbUserData.access.access_id;
       req.session.loggedIn = true;
+      console.log(req.session);
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
   });
