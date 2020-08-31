@@ -1,0 +1,13 @@
+footer {
+  border-top: 1px solid lightgrey;
+}
+#readonly input {
+  background-color: transparent;
+  border: 1px solid lightgrey;
+}
+
+.edit-link {
+  font-style: italic;
+  font-size: x-large;
+  color: #225ca3;
+}
