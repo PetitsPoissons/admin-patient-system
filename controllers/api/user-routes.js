@@ -62,7 +62,7 @@ router.post('/logout', (req, res) => {
 router.get('/', (req, res) => {
   User.findAll({
     attributes: [
-      'user_id', 'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+      'user_id', 'username', 'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', 'dob', 'ssn', 'active', 'license_expiration',[sequelize.literal(
         '(SELECT COUNT(DISTINCT relation.client_id) FROM relation WHERE user.user_id = relation.user_id)'
       ), 'clients_nb']
     ],

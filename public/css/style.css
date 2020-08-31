@@ -11,3 +11,9 @@ footer {
   font-size: x-large;
   color: #225ca3;
 }
+
+.save-info {
+  background-color: #225ca3;
+  font-size: 30px;
+  font-weight: 900;
+}

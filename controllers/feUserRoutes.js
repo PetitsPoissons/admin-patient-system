@@ -17,7 +17,6 @@ router.get('/', (req, res) => {
     })
     .then(dbUserData => {
       const users = dbUserData.map(user => user.get({ plain: true }));
-      console.log(users);
       if (req.session.access_id === 3) {
         users.filter(user => user.access.id === 3);
       }
@@ -33,7 +32,7 @@ router.get('/', (req, res) => {
   }
 });
 
-// render single-user template
+// render single-user template - READONLY
 router.get('/:id', (req, res) => {
   if (req.session.loggedIn) {
     User.findOne({
@@ -55,10 +54,6 @@ router.get('/:id', (req, res) => {
         {
           model: Client,
           attributes: ['first_name', 'last_name', 'primary_phone', 'alt_phone', 'email']
-          // through: {
-          //   model: Relation,
-          //   attributes: ['start_date', 'end_date']
-          // }
         }
       ]
     })
@@ -71,6 +66,52 @@ router.get('/:id', (req, res) => {
       const user = dbUserData.get({ plain: true });
       // pass data to template
       res.render('single-user', { user });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  }
+  else {
+    res.render('login');
+  }
+});
+
+// render single-user template - EDIT FORM
+router.get('/edit/:id', (req, res) => {
+  console.log('!*******I am in the correct route!*******');
+  if (req.session.loggedIn) {
+    User.findOne({
+      attributes: {
+        include: [
+          'first_name', 'last_name', 'dob', 'ssn', 'username', 'password', 'active', 'email', 'primary_phone', 'alt_phone', 'street_address', 'city', 'state', 'zip', [sequelize.literal(
+            '(SELECT COUNT(DISTINCT relation.client_id) FROM relation WHERE user.user_id = relation.user_id)'
+          ), 'clients_nb']
+        ]
+      },
+      where: {
+        user_id: req.params.id
+      },
+      include: [
+        {
+          model: Access,
+          attributes: ['access_type', 'access_desc']
+        },
+        {
+          model: Client,
+          attributes: ['first_name', 'last_name', 'primary_phone', 'alt_phone', 'email']
+        }
+      ]
+    })
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user found' });
+        return;
+      }
+      // serialize the data
+      const user = dbUserData.get({ plain: true });
+      // pass data to template
+      res.render('edit-single-user', { user });
     })
     .catch(err => {
       console.log(err);
