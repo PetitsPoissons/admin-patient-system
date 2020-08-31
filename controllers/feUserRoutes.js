@@ -54,11 +54,11 @@ router.get('/:id', (req, res) => {
         },
         {
           model: Client,
-          attributes: ['first_name', 'last_name', 'primary_phone', 'alt_phone', 'email'],
-          through: {
-            model: Relation,
-            attributes: ['start_date', 'end_date']
-          }
+          attributes: ['first_name', 'last_name', 'primary_phone', 'alt_phone', 'email']
+          // through: {
+          //   model: Relation,
+          //   attributes: ['start_date', 'end_date']
+          // }
         }
       ]
     })
