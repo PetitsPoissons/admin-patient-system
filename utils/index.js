@@ -7,20 +7,22 @@ const seedRecord = require('./seedRecord')
 const seedRelation = require('./seedRelation')
 const seedTx = require('./seedTx')
 const seedUser = require('./seedUser')
+const seedForm = require('./seedForm')
 
 const sequelize = require('../config/connection')
 
 const seedAll = async () => {
     await sequelize.sync({ force: true })
     await seedAccess()
+    await seedUser()
     await seedClient()
     await seedDx()
-    await seedIsDx()
+    await seedForm()
     await seedProcedure()
-    await seedRecord()
     await seedRelation()
+    await seedIsDx()
     await seedTx()
-    await seedUser()
+    await seedRecord()
 
     process.exit(0)
 }
