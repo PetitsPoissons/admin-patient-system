@@ -1,4 +1,6 @@
-[
+const { Relation } = require('../models')
+
+const relationArr = [
   {
     "relation_id": 1,
     "user_id": "6c808d65-ff34-4e35-a87c-cbe3724cfef9",
@@ -31,3 +33,7 @@
     "start_date": "2020-01-10 17:42:23"
   }
 ]
+
+const seedRelation = () => Relation.bulkCreate(relationArr)
+
+module.exports = seedRelation

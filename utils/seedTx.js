@@ -1,4 +1,6 @@
-[
+const { Treatment } = require('../models')
+
+const treatmentArr = [
   {
     "tx_id": 1,
     "procedure_id": 1,
@@ -30,3 +32,7 @@
     "tx_date": "2020-01-10 17:42:23"
   }
 ]
+
+const seedTreatment = () => Treatment.bulkCreate(treatmentArr)
+
+module.exports = seedTreatment

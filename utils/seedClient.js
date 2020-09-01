@@ -1,4 +1,6 @@
-[
+const { Client } = require('../models')
+
+const clientArr = [
   {
     "client_id": "008229bf-2006-4262-894b-e4ae22561ec7",
     "first_name": "Valentia",
@@ -180,3 +182,7 @@
     "updatedAt": "2020-08-30T14:15:11.000Z"
   }
 ]
+
+const seedClients = () => Client.bulkCreate(clientArr)
+
+module.exports = seedClients
