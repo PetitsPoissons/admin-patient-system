@@ -1,4 +1,8 @@
 <div class="container my-3">
+  <div class="row my-5 d-flex justify-content-between">
+    <h4 class="my-5">Clients List</h4>
+    <button type="button" class="my-5 btn save-info shadow text-white" onClick="goToNewClientPage()">Add a client</button>
+  </div>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -26,3 +30,22 @@
     </tbody>
   </table>
 </div>
+<!--script>
+  async function renderCreateClientPage() {
+    event.preventDefault();
+    const response = await fetch('/new-client', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (response.ok) {
+      document.location.replace('/clients/new');
+    }
+}
+</script-->
+<script>
+  function goToNewClientPage() {
+    document.location.replace('/clients/new');
+  }
+</script>

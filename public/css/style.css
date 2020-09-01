@@ -8,12 +8,12 @@ footer {
 
 .edit-link {
   font-style: italic;
-  font-size: x-large;
+  font-size: 30px;
+  font-weight: 900;
   color: #225ca3;
 }
 
 .save-info {
   background-color: #225ca3;
-  font-size: 30px;
   font-weight: 900;
 }

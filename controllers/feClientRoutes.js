@@ -2,7 +2,18 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Client, User, Relation } = require('../models');
 
-// display all clients
+// render template to create a new client
+// render create client page
+router.get('/new', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('new-client');
+  }
+  else {
+    res.render('login');
+  }
+});
+
+// render template to display all clients
 router.get('/', (req, res) => {
     if (req.session.loggedIn) {
       Client.findAll({
