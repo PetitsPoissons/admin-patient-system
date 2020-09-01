@@ -1,4 +1,6 @@
-[
+const { User } = require('../models')
+
+const userArr = [
   {
     "user_id": "8f95efc0-8942-43cc-8b59-83fd92690431",
     "username": "jraggitt0",
@@ -286,3 +288,7 @@
     "npi_number": null
   }
 ]
+
+const seedUsers = () => User.bulkCreate(userArr)
+
+module.exports = seedUsers
