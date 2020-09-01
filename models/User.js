@@ -91,7 +91,7 @@ User.init(
     },
     active: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      defaultValue: true
     },
     license_number: {
       type: DataTypes.STRING,

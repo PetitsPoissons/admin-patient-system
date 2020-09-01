@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
         },
         {
           model: Client,
-          attributes: ['first_name', 'last_name', 'primary_phone', 'alt_phone', 'email']
+          attributes: ['client_id', 'first_name', 'last_name', 'primary_phone', 'email', 'active']
         }
       ]
     })
