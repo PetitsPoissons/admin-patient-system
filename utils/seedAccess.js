@@ -1,4 +1,6 @@
-[
+const { Access } = require('../models')
+
+const accessArr = [
   {
     "access_id": 1,
     "access_type": "superuser",
@@ -35,3 +37,7 @@
     "updatedAt": "2020-08-30T14:06:20.000Z"
   }
 ]
+
+const seedAccess = () => Access.bulkCreate(accessArr)
+
+module.exports = seedAccess;

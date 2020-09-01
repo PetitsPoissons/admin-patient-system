@@ -1,0 +1,109 @@
+<article class="row d-block w-100 mt-5">
+  <form id="readonly">
+    <p class="text-right">
+      <a href="/clients/edit/{{ client.client_id }}" class="edit-link">
+        Edit {{ client.first_name }} {{ client.last_name }}'s information
+      </a>
+    </p>
+    <h3 class="mt-3">Personal Information</h3>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="clientFirstName">First Name</label>
+        <input type="text" class="form-control" id="clientFirstName" value="{{ client.first_name }}" readonly/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="clientLastName">Last Name</label>
+        <input type="text" class="form-control" id="clientLastName" value="{{ client.last_name }}" readonly/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2 text-center">
+        <div class="form-check">
+          {{#if client.active}}
+            <input class="form-check-input" type="checkbox" id="clientActive" value="true" checked readonly/>
+          {{else}}
+            <input class="form-check-input" type="checkbox" id="clientActive" value="false" readonly/>
+          {{/if}}
+          <label class="form-check-label" for="clientActive">
+            Active
+          </label>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="clientDob">Date of Birth</label>
+        <input type="date" class="form-control" id="clientDob" value="{{ format_date client.dob }}" readonly/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="clientSsn">Social Security #</label>
+        <input type="text" class="form-control" id="clientSsn" value="{{ client.ssn }}" readonly/>
+      </div>
+    </div>
+    <h3 class="mt-3">Contact Information</h3>
+    <div class="form-group">
+      <label for="clientEmail">Email</label>
+      <input type="email" class="form-control" id="clientEmail" value="{{ client.email }}" readonly/>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="clientPrimaryPhone">Mobile Phone</label>
+        <input type="phone" class="form-control" id="clientPrimaryPhone" value="{{ client.primary_phone }}" readonly/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="clientAltPhone">Other Phone</label>
+        <input type="phone" class="form-control" id="clientAltPhone" value="{{ client.alt_phone }}" readonly/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="clientStreetAddress">Street Address</label>
+      <input type="text" class="form-control" id="clientStreetAddress" value="{{ client.street_address }}" readonly/>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="clientCity">City</label>
+        <input type="text" class="form-control" id="clientCity" value="{{ client.city }}" readonly/>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="clientState">State</label>
+        <input type="text" class="form-control" id="clientState" value="{{ client.state }}" readonly/>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="clientZip">Zip</label>
+        <input type="text" class="form-control" id="clientZip" value="{{ client.zip }}" readonly/>
+      </div>
+    </div>
+    <h3 class="mt-3">Additional Client Information</h3>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="clientGender">Gender</label>
+            <input type="text" class="form-control" id="clientGender" value="" readonly/>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="clientEthnicity">Ethnicity</label>
+            <input type="text" class="form-control" id="clientEthnicity" value="" readonly/>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="clientRelationshipStatus">Relationship Status</label>
+            <input type="text" class="form-control" id="clientRelationshipStatus" value="" readonly/>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="clientEmploymentStatus">Employment Status</label>
+            <input type="text" class="form-control" id="clientEmploymentStatus" value="" readonly/>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="clientPreferredLanguage">Preferred Language</label>
+            <input type="text" class="form-control" id="clientPreferredLanguage" value="" readonly/>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="clientReferredBy">Referred By</label>
+            <input type="text" class="form-control" id="clientReferredBy" value="" readonly/>
+        </div>
+    </div>
+  </form>
+    <p>{{ client.first_name }} {{ client.last_name }} has {{ client.clinicians_nb }} {{ format_plural "clinician" client.clinicians_nb }} assigned.  
+    </p>
+    <p class="text-right">
+      <a href="/clients/records/{{ client.client_id }}" class="edit-link">
+        View {{ client.first_name }} {{ client.last_name }}'s records
+      </a>
+    </p>
+</article>

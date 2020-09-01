@@ -1,4 +1,6 @@
-[
+const { Form } = require('../models')
+
+const formArr = [
   {
     "form_id": 1,
     "form_name": "SOAP",
@@ -42,3 +44,7 @@
     "updatedAt": "2020-08-30T14:20:49.000Z"
   }
 ]
+
+const seedForm = () => Form.bulkCreate(formArr)
+
+module.exports = seedForm

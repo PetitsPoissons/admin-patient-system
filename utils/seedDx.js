@@ -1,4 +1,6 @@
-[
+const { Diagnosis } = require('../models')
+
+const dxArr = [
   {
     "dx_id": 1,
     "dx_name": "ultrices",
@@ -40,3 +42,7 @@
     "updatedAt": "2020-08-30T15:09:55.000Z"
   }
 ]
+
+const seedDx = () => Diagnosis.bulkCreate(dxArr)
+
+module.exports = seedDx

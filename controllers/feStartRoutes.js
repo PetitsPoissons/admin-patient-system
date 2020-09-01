@@ -13,8 +13,12 @@ router.get('/login', (req, res) => {
 
 // render homepage
 router.get('/', (req, res) => {
-  console.log(req.session);
-  res.render('homepage');
+  if (req.session.loggedIn) {
+    res.render('homepage');
+  }
+  else {
+    res.render('login');
+  }
 });
 
 module.exports = router;

@@ -1,4 +1,6 @@
-[
+const { User } = require('../models')
+
+const userArr = [
   {
     "user_id": "8f95efc0-8942-43cc-8b59-83fd92690431",
     "username": "jraggitt0",
@@ -262,5 +264,31 @@
     "license_type": "aakhyopzxekievny",
     "license_expiration": "2029-01-30 02:10:24",
     "npi_number": null
+  },
+  {
+    "user_id": "926bbf97-3956-49b9-8815-d4ee6882be01",
+    "username": "username3",
+    "password": "password3",
+    "email": "clinician@shrinko.net",
+    "first_name": "Some",
+    "last_name": "Clinician",
+    "dob": "1983-06-13 03:25:09",
+    "ssn": "345-94-7198",
+    "primary_phone": "413-234-5452",
+    "alt_phone": null,
+    "street_address": "Some Address",
+    "city": "Some City",
+    "state": "State",
+    "zip": "12345",
+    "access_id": 3,
+    "active":true,
+    "license_number": "SQm0VRJZ",
+    "license_type": "aakhyoefxekievny",
+    "license_expiration": "2025-01-30 02:10:24",
+    "npi_number": null
   }
 ]
+
+const seedUsers = () => User.bulkCreate(userArr)
+
+module.exports = seedUsers

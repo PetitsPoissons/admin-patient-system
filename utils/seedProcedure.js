@@ -1,4 +1,6 @@
-[
+const { Procedure } = require('../models')
+
+const procedureArr = [
   {
     "procedure_id": 1,
     "procedure_name": "Intake",
@@ -81,3 +83,7 @@
     "updatedAt": "2020-08-30T14:19:04.000Z"
   }
 ]
+
+const seedProcedure = () => Procedure.bulkCreate(procedureArr)
+
+module.exports = seedProcedure

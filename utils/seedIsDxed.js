@@ -1,4 +1,6 @@
-[
+const { IsDiagnosed } = require('../models')
+
+const isDxArr = [
   {
     "id": 1,
     "relation_id": 1,
@@ -36,3 +38,7 @@
     "dx_date": "2020-01-10 18:42:23"    
   }
 ]
+
+const seedIsDx = () => IsDiagnosed.bulkCreate(isDxArr)
+
+module.exports = seedIsDx

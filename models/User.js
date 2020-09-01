@@ -106,11 +106,14 @@ User.init(
     license_number: {
       type: DataTypes.STRING,
       validate: {
-        len: [1, 45]
+        len: [0, 45]
       }
     },
     license_type: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 45]
+      }
     },
     license_expiration: {
       type: DataTypes.DATE
@@ -118,7 +121,7 @@ User.init(
     npi_number: {
       type: DataTypes.STRING,
       validate: {
-        len: [1, 45]
+        len: [0, 45]
       }
     }
   },

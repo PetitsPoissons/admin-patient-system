@@ -4,19 +4,22 @@ const { Procedure } = require('../models');
 
 //display all procedures
 router.get('/', (req, res) => {
-    Procedure.findAll({
-        attributes: ['procedure_name', 'procedure_desc', 'cpt_code', 'duration']
-    })
-    .then(dbProcedureData => {
-        const procedures = dbProcedureData.map(procedure => procedure.get({ plain: true }));
-    res.render('procedures', { procedures });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+    if (req.session.loggedIn) {
+        Procedure.findAll({
+            attributes: ['procedure_name', 'procedure_desc', 'cpt_code', 'duration']
+        })
+        .then(dbProcedureData => {
+            const procedures = dbProcedureData.map(procedure => procedure.get({ plain: true }));
+        res.render('procedures', { procedures });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+    }
+    else {
+        res.render('login');
+    }
 });
-
-
 
 module.exports = router;

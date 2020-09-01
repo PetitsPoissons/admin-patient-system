@@ -1,4 +1,6 @@
-[
+const { Record } = require('../models')
+
+const recordArr = [
   {
     "record_id": 1,
     "tx_id": 1,
@@ -36,3 +38,7 @@
     "record_date": "2020-01-10 17:42:23"
   }
 ]
+
+const seedRecords = () => Record.bulkCreate(recordArr)
+
+module.exports = seedRecords

@@ -19,6 +19,10 @@ router.post('/login', (req, res) => {
   User.findOne({
     where: {
       username: req.body.username
+    },
+    include: {
+      model: Access,
+      attribute: ['access_id']
     }
   })
   .then(dbUserData => {
@@ -36,6 +40,7 @@ router.post('/login', (req, res) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.user_id;
       req.session.username = dbUserData.username;
+      req.session.access_id = dbUserData.access.access_id;
       req.session.loggedIn = true;
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
@@ -57,7 +62,7 @@ router.post('/logout', (req, res) => {
 router.get('/', (req, res) => {
   User.findAll({
     attributes: [
-      'user_id', 'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', [sequelize.literal(
+      'user_id', 'username', 'first_name', 'last_name', 'primary_phone', 'alt_phone', 'email', 'dob', 'ssn', 'active', 'license_expiration',[sequelize.literal(
         '(SELECT COUNT(DISTINCT relation.client_id) FROM relation WHERE user.user_id = relation.user_id)'
       ), 'clients_nb']
     ],
