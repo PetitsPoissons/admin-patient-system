@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const { User, Access, Client, Record } = require('../models')
-const sequelize = require('../config/connection');
 
 // render login page
 router.get('/login', (req, res) => {
@@ -9,6 +7,15 @@ router.get('/login', (req, res) => {
     return;
   }
   res.render('login');
+});
+
+// render register page
+router.get('/register', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('register');
 });
 
 // render homepage
