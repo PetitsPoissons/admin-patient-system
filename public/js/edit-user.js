@@ -11,14 +11,7 @@ async function editUserFormHandler(event) {
   const dob = document.querySelector('#userDob').value.trim();
   const ssn = document.querySelector('#userSsn').value.trim();
   const username = document.querySelector('#userUsername').value.trim();
-  const activeEl = document.querySelector('#userActive');
-  let active;
-  if (activeEl.checked) {
-    active = 1;
-  }
-  else {
-    active = 0;
-  }
+  const active = document.querySelector('#userActive').value;
   const email = document.querySelector('#userEmail').value.trim();
   const primary_phone = document.querySelector('#userPrimaryPhone').value.trim();
   const alt_phone = document.querySelector('#userAltPhone').value.trim();

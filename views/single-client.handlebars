@@ -1,7 +1,11 @@
 <article class="row d-block w-100 mt-5">
-  <form>
+  <form id="readonly">
+    <p class="text-right">
+      <a href="/clients/edit/{{ client.client_id }}" class="edit-link">
+        Edit {{ client.first_name }} {{ client.last_name }}'s information
+      </a>
+    </p>
     <h3 class="mt-3">Personal Information</h3>
-    <p>Edit Personal Information</p>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="clientFirstName">First Name</label>
@@ -13,45 +17,28 @@
       </div>
     </div>
     <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="clientDob">Date of Birth</label>
-        <input type="date" class="form-control" id="clientDob" value="{{ client.dob }}" readonly/>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="clientSsn">Social Security #</label>
-        <input type="text" class="form-control" id="clientSsn" value="{{ client.ssn }}" readonly/>
-      </div>
-    </div>
-    {{!-- <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="clientclientname">clientname</label>
-        <input type="text" class="form-control" id="clientclientname" value="{{ client.clientname }}" readonly/>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="clientPassword">Password</label>
-        <input type="password" class="form-control" id="clientPassword" value="{{ client.password }}" readonly/>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-2">
+      <div class="form-group col-md-2 text-center">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="clientActive" value="" readonly/>
+          {{#if client.active}}
+            <input class="form-check-input" type="checkbox" id="clientActive" value="true" checked readonly/>
+          {{else}}
+            <input class="form-check-input" type="checkbox" id="clientActive" value="false" readonly/>
+          {{/if}}
           <label class="form-check-label" for="clientActive">
             Active
           </label>
         </div>
       </div>
       <div class="form-group col-md-4">
-        <label for="clientAccessType">Access Type</label>
-        <input type="text" class="form-control" id="clientAccessType" value="{{ client.access.access_type }}" readonly/>
+        <label for="clientDob">Date of Birth</label>
+        <input type="date" class="form-control" id="clientDob" value="{{ format_date client.dob }}" readonly/>
       </div>
       <div class="form-group col-md-6">
-        <label for="clientAccessDesc">Description</label>
-        <input type="text" class="form-control" id="clientAccessDesc" value="{{ client.access.access_desc }}" readonly/>
+        <label for="clientSsn">Social Security #</label>
+        <input type="text" class="form-control" id="clientSsn" value="{{ client.ssn }}" readonly/>
       </div>
-    </div> --}}
+    </div>
     <h3 class="mt-3">Contact Information</h3>
-    <p>Edit Contact Information</p>
     <div class="form-group">
       <label for="clientEmail">Email</label>
       <input type="email" class="form-control" id="clientEmail" value="{{ client.email }}" readonly/>
@@ -85,38 +72,38 @@
       </div>
     </div>
     <h3 class="mt-3">Additional Client Information</h3>
-    <p>Edit Additional Clinician Information</p>
     <div class="form-row">
         <div class="form-group col-md-3">
             <label for="clientGender">Gender</label>
-            <input type="text" class="form-control" id="clientGender" value="{{ client.gender }}" readonly/>
+            <input type="text" class="form-control" id="clientGender" value="" readonly/>
         </div>
         <div class="form-group col-md-3">
             <label for="clientEthnicity">Ethnicity</label>
-            <input type="text" class="form-control" id="clientEthnicity" value="{{ client.ethnicity }}" readonly/>
+            <input type="text" class="form-control" id="clientEthnicity" value="" readonly/>
         </div>
         <div class="form-group col-md-3">
             <label for="clientRelationshipStatus">Relationship Status</label>
-            <input type="date" class="form-control" id="clientRelationshipStatus" value="{{ client.relationship_status }}" readonly/>
+            <input type="text" class="form-control" id="clientRelationshipStatus" value="" readonly/>
         </div>
         <div class="form-group col-md-3">
             <label for="clientEmploymentStatus">Employment Status</label>
-            <input type="text" class="form-control" id="clientEmploymentStatus" value="{{ client.employment_status }}" readonly/>
+            <input type="text" class="form-control" id="clientEmploymentStatus" value="" readonly/>
         </div>
         <div class="form-group col-md-3">
             <label for="clientPreferredLanguage">Preferred Language</label>
-            <input type="date" class="form-control" id="clientPreferredLanguage" value="{{ client.preferred_language }}" readonly/>
+            <input type="text" class="form-control" id="clientPreferredLanguage" value="" readonly/>
         </div>
         <div class="form-group col-md-3">
             <label for="clientReferredBy">Referred By</label>
-            <input type="text" class="form-control" id="clientReferredBy" value="{{ client.referred_by }}" readonly/>
+            <input type="text" class="form-control" id="clientReferredBy" value="" readonly/>
         </div>
     </div>
-    <div class="form-row">
-      <div>{{ client.first_name }} {{ client.last_name }} has {{ client.users_nb }} for a doctor.</div>
-      <div>View {{ client.first_name }} {{ client.last_name }}'s doctor(s)</div>
-    </div>
   </form>
+    <p>{{ client.first_name }} {{ client.last_name }} has {{ client.clinicians_nb }} {{ format_plural "clinician" client.clinicians_nb }} assigned.  
+    </p>
+    <p class="text-right">
+      <a href="/clients/records/{{ client.client_id }}" class="edit-link">
+        View {{ client.first_name }} {{ client.last_name }}'s records
+      </a>
+    </p>
 </article>
-<script src="/js/edit-client.js"></script>
-<script src="/js/delete-client.js"></script>

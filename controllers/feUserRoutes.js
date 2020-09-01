@@ -17,9 +17,6 @@ router.get('/', (req, res) => {
     })
     .then(dbUserData => {
       const users = dbUserData.map(user => user.get({ plain: true }));
-      if (req.session.access_id === 3) {
-        users.filter(user => user.access.id === 3);
-      }
       res.render('users', { users });
     })
     .catch(err => {
@@ -79,7 +76,6 @@ router.get('/:id', (req, res) => {
 
 // render single-user template - EDIT FORM
 router.get('/edit/:id', (req, res) => {
-  console.log('!*******I am in the correct route!*******');
   if (req.session.loggedIn) {
     User.findOne({
       attributes: {
