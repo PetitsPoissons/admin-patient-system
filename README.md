@@ -18,9 +18,10 @@
     
   1. Create a `.env` file and add your database name, MySQL username, and MySQL password as follows: 
   ```
-  DB_NAME='shrinko_db'
-  DB_USER='your_mysql_username'
-  DB_PW='your_mysql_pw'
+  DB_NAME=shrinko_db
+  DB_USER=your_mysql_username
+  DB_PW=your_mysql_pw
+  SESSION_SECRET=your_secret
   ```
   2. Open MySQL shell and migrate the database schema by typing `source schema.sql`
   3. Type `exit` to exit the MySQL shell
