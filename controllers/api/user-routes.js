@@ -44,6 +44,10 @@ router.post('/login', (req, res) => {
       req.session.loggedIn = true;
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
@@ -144,6 +148,40 @@ router.put('/:id', (req, res) => {
       return;
     }
     res.json(dbUserData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+router.post('/register', (req, res) => {
+  // update user with username and password provided
+  User.update(req.body, {
+    individualHooks: true,
+    where: {
+      email: req.body.email
+    },
+    //attributes: ['user_id'],
+    // include: {
+    //   model: Access,
+    //   attribute: ['access_id']
+    // }
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: "You are not an authorized user. Please contact Shrinko's administrator to set up your account." });
+      return;
+    }
+    // create session and send response back
+    const registeredUser = dbUserData[1][0].get({ plain: true });
+    req.session.save(() => {
+      req.session.user_id = registeredUser.user_id;
+      req.session.username = registeredUser.username;
+      req.session.access_id = registeredUser.access_id;
+      req.session.loggedIn = true;
+      res.json({ user: dbUserData, message: 'Welcome to Shrinko EMHR system. You are now registered and logged in!' });
+    });
   })
   .catch(err => {
     console.log(err);
