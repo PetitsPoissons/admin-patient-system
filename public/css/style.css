@@ -60,23 +60,26 @@
                         zoom: 1;
                       };
 
-footer {
-  border-top: 1px solid lightgrey;
+footer div {
+  border-top: 1px solid darkgrey;
 }
-#readonly input {
+#edit-user input {
   background-color: transparent;
   border: 1px solid lightgrey;
 }
 
-.edit-link {
+.title {
   font-style: italic;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 900;
   color: rgb(42, 152, 172);;
 }
 
-.save-info {
+.btn-general {
   background-color: rgb(42, 152, 172);
   font-weight: 900;
 }
 
+.btn-general:hover {
+  background-color: rgb(34, 127, 143);
+}
