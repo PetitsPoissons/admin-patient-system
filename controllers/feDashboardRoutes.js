@@ -8,6 +8,12 @@ router.get('/', (req, res) => {
       user_id: req.session.user_id
     },
     attributes: ['relation_id', 'user_id', 'client_id', 'start_date', 'end_date'],
+    include: [
+      {
+        model: Client,
+        attributes: ['first_name', 'last_name', 'email', 'primary_phone']
+      }
+    ],
     order: ['start_date']
   })
   .then(dbRelationData => {
