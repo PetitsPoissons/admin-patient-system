@@ -39,6 +39,10 @@ router.get('/', (req, res) => {
 ///////////////////////////////////////////////////////////////
 
 router.get('/tx/:id', (req, res) => {
+  req.session.save(() => {
+    req.session.relation_id = req.params.id;
+  });
+  console.log('***************req.session', req.session);
   Treatment.findAll({
     where: {
       relation_id: req.params.id
@@ -51,6 +55,7 @@ router.get('/tx/:id', (req, res) => {
       },
       {
         model: Relation,
+        attributes: ['relation_id'],
         include: {
           model: Client,
           attributes: ['client_id', 'first_name', 'last_name', 'active', 'dob', 'ssn', 'email', 'primary_phone', 'alt_phone', 'street_address', 'city', 'state', 'zip']
@@ -63,12 +68,48 @@ router.get('/tx/:id', (req, res) => {
     // serialize data
     const treatments = dbTxData.map(tx => tx.get({ plain: true }));
     const client = treatments[0].relation.client;
-    console.log('treatments', treatments);
-    console.log('treatments.relation.client', client);
     // render data
     res.render('treatments', { treatments, client, loggedIn: true });
   })
 })
 
+///////////////////////////////////////////////////////
+// render dashboard-edit-client template - EDIT FORM //
+///////////////////////////////////////////////////////
+
+router.get('/tx/edit/client/:id', (req, res) => {
+  if (req.session.loggedIn) {
+    Client.findOne({
+      attributes: {
+        include: [
+          'first_name', 'last_name', 'dob', 'ssn', 'email', 'primary_phone', 'alt_phone', 
+          'street_address', 'city', 'state', 'zip', 'insurance', 'active', [sequelize.literal(
+            '(SELECT COUNT(DISTINCT relation.user_id) FROM relation WHERE client.client_id = relation.client_id)'
+          ), 'clinicians_nb']
+        ]
+      },
+      where: {
+        client_id: req.params.id
+      }
+    })
+    .then(dbClientData => {
+      if (!dbClientData) {
+        res.status(404).json({ message: 'No client found' });
+        return;
+      }
+      // serialize the data
+      const client = dbClientData.get({ plain: true });
+      // pass data and relation_id to template
+      res.render('dash-edit-client', { client });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+  }
+  else {
+    res.render('login');
+  }
+});
 
 module.exports = router;
