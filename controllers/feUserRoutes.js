@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User, Access, Client, Relation } = require('../models');
+const { User, Access, Client } = require('../models');
 
-// render all users depending on user's access level -> RESTRICTION TO BE ADDED
+///////////////////////////
+// render users template //
+///////////////////////////
+
 router.get('/', (req, res) => {
   if (req.session.loggedIn) {
     User.findAll({
@@ -16,8 +19,37 @@ router.get('/', (req, res) => {
       order: ['last_name']
     })
     .then(dbUserData => {
-      const users = dbUserData.map(user => user.get({ plain: true }));
-      res.render('users', { users });
+
+      // serialize data
+      let users = dbUserData.map(user => user.get({ plain: true }));
+      
+      // check user's access type
+      let super_access = false;
+      let admin_access = false;
+      let shrink_access = false;
+      let basic_access = false;
+      let biller_access = false;
+      switch(req.session.access_id) {
+        case 1:
+          super_access = true;
+          break;
+        case 2:
+          admin_access = true;
+          break;
+        case 3:
+          shrink_access = true;
+          users = users.filter(user => user.user_id === req.session.user_id);
+          break;
+        case 4:
+          basic_access = true;
+          break;
+        case 5:
+          biller_access = true;
+          break;
+      }
+      
+      // render template with data and access info
+      res.render('users', { users, super_access, admin_access, shrink_access, basic_access, biller_access });
     })
     .catch(err => {
       console.log(err);
