@@ -18,10 +18,18 @@ User.init(
       allowNull: false
     },
     username: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [6, 20]
+      }
     },
     password: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [6, 20]
+      }
     },
     email: {
       type: DataTypes.STRING,
@@ -91,7 +99,7 @@ User.init(
     },
     active: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      defaultValue: true
     },
     license_number: {
       type: DataTypes.STRING,
@@ -106,7 +114,8 @@ User.init(
       }
     },
     license_expiration: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: true
     },
     npi_number: {
       type: DataTypes.STRING,

@@ -37,7 +37,7 @@ async function createClientFormHandler(event) {
     }
   });
   if (response.ok) {
-    document.location.replace('/clients/new');
+    document.location.replace('/clients');
   }
 }
 

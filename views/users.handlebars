@@ -1,4 +1,17 @@
 <div class="container my-3">
+  {{#if super_access }}
+  <div class="row mt-5 mb-3 d-flex justify-content-between">
+    <h4>Users List</h4>
+    <button type="button" class="btn btn-general shadow text-white" onClick="goToNewUserPage()">+ Add User</button>
+  </div>
+  {{/if}}
+  {{#if admin_access }}
+    <div class="row mt-5 mb-3 d-flex justify-content-between">
+      <h4>Users List</h4>
+      <button type="button" class="btn btn-general shadow text-white" onClick="goToNewUserPage()">+ Add User</button>
+    </div>
+  {{/if}}
+  {{#if shrink_access }}
   <table class="table table-hover">
     <thead>
       <tr>
@@ -13,14 +26,56 @@
       <tr>
         <td>
           <a href="/users/{{ user_id }}">
-            {{ first_name }} {{ last_name }}
+            {{ last_name }}, {{ first_name }}
           </a>
         </td>
-        <td>{{ email }}</td>
-        <td>{{ primary_phone }}</td>
+        <td><a href="mailto:{{ email }}">{{ email }}</a></td>
+        <td><a href="tel:{{ primary_phone }}">{{ primary_phone }}</a></td>
         <td>{{ access.access_type }}</td>
       </tr>
       {{/each}}
     </tbody>
   </table>
+  {{else}}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Access Level</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}
+      <tr>
+        <td>
+          <a href="/users/{{ user_id }}">
+            {{ last_name }}, {{ first_name }}
+          </a>
+        </td>
+        <td><a href="mailto:{{ email }}">{{ email }}</a></td>
+        <td><a href="tel:{{ primary_phone }}">{{ primary_phone }}</a></td>
+        <td>{{ access.access_type }}</td>
+        <td><button type="submit" class="btn btn-delete bg-default"><i class="fa fa-trash text-danger"></i></button></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{/if}}
 </div>
+{{#if super_access }}
+<script>
+  function goToNewUserPage() {
+    document.location.replace('/users/new');
+  }
+</script>
+{{/if}}
+{{#if admin_access }}
+<script>
+  function goToNewUserPage() {
+    document.location.replace('/users/new');
+  }
+</script>
+{{/if}}

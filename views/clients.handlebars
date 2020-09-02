@@ -1,7 +1,7 @@
 <div class="container my-3">
-  <div class="row my-5 d-flex justify-content-between">
-    <h4 class="my-5">Clients List</h4>
-    <button type="button" class="my-5 btn save-info shadow text-white" onClick="goToNewClientPage()">Add a client</button>
+  <div class="row mt-5 mb-3 d-flex justify-content-between">
+    <h4>Clients List</h4>
+    <button type="button" class="btn btn-general shadow text-white" onClick="goToNewClientPage()">+ Add Client</button>
   </div>
   <table class="table table-hover">
     <thead>
@@ -18,32 +18,17 @@
       <tr>
         <td>
           <a href="/clients/{{ client_id }}">
-            {{ first_name }} {{ last_name }}
+            {{ last_name }}, {{ first_name }}
           </a>
-        </td>
-        <td>{{ email }}</td>
-        <td>{{ primary_phone }}</td>
-        <td>{{ alt_phone }}</td>
+        <td><a href="mailto:{{ email }}">{{ email }}</a></td>
+        <td><a href="tel:{{ primary_phone }}">{{ primary_phone }}</a></td>
+        <td><a href="tel:{{ alt_phone }}">{{ alt_phone }}</a></td>
         <!--td></td-->
       </tr>
       {{/each}}
     </tbody>
   </table>
 </div>
-<!--script>
-  async function renderCreateClientPage() {
-    event.preventDefault();
-    const response = await fetch('/new-client', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    if (response.ok) {
-      document.location.replace('/clients/new');
-    }
-}
-</script-->
 <script>
   function goToNewClientPage() {
     document.location.replace('/clients/new');

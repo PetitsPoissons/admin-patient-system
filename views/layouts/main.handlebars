@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shrinko EMHR</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
   </head>
 
@@ -36,8 +37,8 @@
           </ul>
           <!--button id="logout" class="btn-no-style">logout</button-->
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control" type="text" placeholder="Search Clients" id="search-clients">
+            <button class="btn" type="submit" id="btn-search"><i class="fa fa-search"></i></button>
           </form>
         </div>
       </nav>
@@ -49,10 +50,11 @@
         {{{ body }}}
       </div>
     </main>
-
+ 
     <!-- Footer -->
     <footer class="row d-block text-center mt-5">
-    <div class="my-3">&copy;The Shrinko Project</div>
+    <hr>
+    <div class="py-3">&copy;The Shrinko Project</div>
     </footer>
 
     <script src="/js/logout.js"></script>
