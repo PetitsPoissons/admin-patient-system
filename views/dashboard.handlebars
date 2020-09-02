@@ -31,7 +31,7 @@
         {{else}}
           <td>ongoing</td>
         {{/if}}
-        <td class="text-center"><a href="dashboard/tx/{{ relation.relation_id }}">{{ relation.tx_dates_nb }}</a></td>
+        <td class="text-center" id="nb_tx_dates"><a href="/dashboard/tx/{{ relation.relation_id }}">{{ relation.tx_dates_nb }}</a></td>
       </tr>
       {{/each}}
     </tbody>

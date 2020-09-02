@@ -48,14 +48,21 @@ router.get('/tx/:id', (req, res) => {
       {
         model: Procedure,
         attributes: ['procedure_name', 'cpt_code', 'duration']
+      },
+      {
+        model: Relation,
+        include: {
+          model: Client,
+          attributes: ['client_id', 'first_name', 'last_name', 'active', 'dob', 'ssn', 'email', 'primary_phone', 'alt_phone', 'street_address', 'city', 'state', 'zip']
+        }
       }
     ],
     order: ['tx_date']
   })
   .then(dbTxData => {
     // serialize data
-    const treatments = dbTxData.map(tx => tx.get({ plain: true }));
-    console.log(treatments);
+    const treatments = dbTxData.map(tx => tx.get({ plain: true }))[0];
+    console.log('treatments.relation.client', treatments.relation.client);
     // render data
     res.render('treatments', { treatments, loggedIn: true });
   })

@@ -113,7 +113,17 @@ button {
   font-style: italic;
   font-size: small;
   color: rgb(42, 152, 172);
-  transition: 1s;
   padding-bottom: 0;
   margin-bottom: 0;
+}
+
+#nb_tx_dates a {
+  text-decoration: none;
+}
+
+#nb_tx_dates {
+  font-size: large;
+  color: rgb(42, 152, 172);
+  font-weight: bold;
+  text-decoration:;
 }
