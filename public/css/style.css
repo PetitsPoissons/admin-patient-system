@@ -1,8 +1,6 @@
-
-*,
 #clientsButton {
     background-color: rgb(42, 152, 172); 
-    color: whitesmoke;
+    /*color: whitesmoke;*/
     text-align: center;
     font-size: 20px;
     opacity: 0.9; /* See the text very clearly over the background */
@@ -73,11 +71,11 @@ footer {
   font-style: italic;
   font-size: 30px;
   font-weight: 900;
-  color: #225ca3;
+  color: rgb(42, 152, 172);
 }
 
 .save-info {
-  background-color: #225ca3;
+  background-color: rgb(42, 152, 172);
   font-weight: 900;
 }
 

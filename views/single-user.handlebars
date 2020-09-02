@@ -92,7 +92,6 @@
       </div>
     </div>
     <h3 class="mt-3">Clinician Information</h3>
-    <p>Edit Clinician Information</p>
     <div class="form-row">
       <div class="form-group col-md-3">
         <label for="userLicenseNb">License #</label>
@@ -112,12 +111,42 @@
       </div>
     </div>
   </form>
-    <p>
+    <!--p>
       {{ user.first_name }} {{ user.last_name }} has {{ user.clients_nb }} {{ format_plural "client" user.clients_nb }}.  
     </p>
     <p class="text-right">
       <a href="/clients/records/{{ client.client_id }}" class="edit-link">
         View {{ user.first_name }} {{ user.last_name }}'s {{ format_plural "client" user.clients_nb }}
       </a>
-    </p>
+    </p-->
 </article>
+
+<div class="mt-3 clients-list">
+  <h5>
+    {{ user.clients_nb }} {{ format_plural "client" user.clients_nb }}:
+  </h5>
+  <table class="table table-hover mx-3">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Alt Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each user.clients}}
+      <tr>
+        <td>
+          <a href="/clients/{{ client_id }}">
+            {{ first_name }} {{ last_name }}
+          </a>
+        </td>
+        <td>{{ email }}</td>
+        <td>{{ primary_phone }}</td>
+        <td>{{ alt_phone }}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div> 
