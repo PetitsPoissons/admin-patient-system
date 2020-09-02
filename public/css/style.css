@@ -104,3 +104,16 @@ button {
 .square-icon {
   font-size: 20px;
 }
+.navbar-brand {
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+#emhr {
+  font-style: italic;
+  font-size: small;
+  color: rgb(42, 152, 172);
+  transition: 1s;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
