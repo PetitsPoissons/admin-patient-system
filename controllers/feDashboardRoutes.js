@@ -61,10 +61,12 @@ router.get('/tx/:id', (req, res) => {
   })
   .then(dbTxData => {
     // serialize data
-    const treatments = dbTxData.map(tx => tx.get({ plain: true }))[0];
-    console.log('treatments.relation.client', treatments.relation.client);
+    const treatments = dbTxData.map(tx => tx.get({ plain: true }));
+    const client = treatments[0].relation.client;
+    console.log('treatments', treatments);
+    console.log('treatments.relation.client', client);
     // render data
-    res.render('treatments', { treatments, loggedIn: true });
+    res.render('treatments', { treatments, client, loggedIn: true });
   })
 })
 

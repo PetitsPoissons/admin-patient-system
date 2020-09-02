@@ -1,8 +1,16 @@
 <article class="row d-block w-100 mt-5">
+  <form id="readonly">
+    <p class="text-right">
+      <a href="/clients/edit/{{ client.client_id }}" class="edit-link">
+        Edit {{ client.first_name }} {{ client.last_name }}'s information
+      </a>
+    </p>
 
-  {{> client-info treatments.relation.client }}
+  {{> client-info client }}
 
+  </form>
 </article>
+
 <div class="mt-3 treatments-list">
   {{#each treatments as |tx| }}
     <p>Tx Date: {{ format_date tx.tx_date }}</p>
