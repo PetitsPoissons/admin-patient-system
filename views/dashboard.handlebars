@@ -12,7 +12,7 @@
         <th scope="col">Phone</th>
         <th scope="col">Start Date</th>
         <th scope="col">End Date</th>
-        <th scope="col">Records</th>
+        <th scope="col" class="text-center"># Tx Dates</th>
       </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
         {{else}}
           <td>ongoing</td>
         {{/if}}
-        <td></td>
+        <td class="text-center">{{ relation.tx_dates_nb }}</td>
       </tr>
       {{/each}}
     </tbody>

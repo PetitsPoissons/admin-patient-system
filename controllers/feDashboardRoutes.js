@@ -1,13 +1,15 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Client, User, Relation } = require('../models');
+const { Client, Relation, Treatment } = require('../models');
 
 router.get('/', (req, res) => {
   Relation.findAll({
     where: {
       user_id: req.session.user_id
     },
-    attributes: ['relation_id', 'user_id', 'client_id', 'start_date', 'end_date'],
+    attributes: ['relation_id', 'user_id', 'client_id', 'start_date', 'end_date', [sequelize.literal(
+      '(SELECT COUNT(DISTINCT treatment.tx_date) FROM treatment WHERE treatment.relation_id = relation.relation_id)'
+    ), 'tx_dates_nb']],
     include: [
       {
         model: Client,
