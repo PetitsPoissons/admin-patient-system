@@ -1,4 +1,8 @@
 <div class="container my-3">
+  <div class="row mt-5 mb-3 d-flex justify-content-between">
+    <h4 class="my-5">Users List</h4>
+    <button type="button" class="my-5 btn btn-general shadow text-white" onClick="goToNewUserPage()">+ Add User</button>
+  </div>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -13,7 +17,7 @@
       <tr>
         <td>
           <a href="/users/{{ user_id }}">
-            {{ first_name }} {{ last_name }}
+            {{ last_name }}, {{ first_name }}
           </a>
         </td>
         <td>{{ email }}</td>
@@ -24,3 +28,8 @@
     </tbody>
   </table>
 </div>
+<script>
+  function goToNewUserPage() {
+    document.location.replace('/users/new');
+  }
+</script>
