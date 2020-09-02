@@ -2,9 +2,22 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Client, Relation, Treatment, Procedure } = require('../models');
 
-////////////////////////////////////////////
-// display all clients for this clinician //
-////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+// render template to create a new client for this clinician //
+///////////////////////////////////////////////////////////////
+
+router.get('/client/new', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('dash-create-client');
+  }
+  else {
+    res.render('login');
+  }
+});
+
+///////////////////////////////////////////////////////////////
+// render template to display all clients for this clinician //
+///////////////////////////////////////////////////////////////
 
 router.get('/', (req, res) => {
   Relation.findAll({

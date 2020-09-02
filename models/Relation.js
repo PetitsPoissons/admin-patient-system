@@ -29,7 +29,7 @@ Relation.init(
     },
     start_date: {
       type: DataTypes.DATE,
-      allowNull: false
+      defaultValue: new Date
     },
     end_date: {
       type: DataTypes.DATE

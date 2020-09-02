@@ -8,7 +8,7 @@ const { Client, User, Relation } = require('../models');
 
 router.get('/new', (req, res) => {
   if (req.session.loggedIn) {
-    res.render('new-client');
+    res.render('create-client');
   }
   else {
     res.render('login');
@@ -36,7 +36,6 @@ router.get('/', (req, res) => {
       })
       .then(dbClientData => {
         const clients = dbClientData.map(client => client.get({ plain: true }));
-        console.log(clients);
         res.render('clients', { clients });
       })
       .catch(err => {

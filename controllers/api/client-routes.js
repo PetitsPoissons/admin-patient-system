@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Client } = require('../../models');
+const { Client, Relation } = require('../../models');
 
 /******************/
 /***** CREATE *****/
@@ -7,7 +7,19 @@ const { Client } = require('../../models');
 
 router.post('/', (req, res) => {
   Client.create(req.body)
-  .then(dbClientData => res.json(dbClientData))
+  .then(dbClientData => {
+    console.log('dbClientData.client_id***********', dbClientData.client_id);
+    console.log('req.session.user_id***********', req.session.user_id);
+    Relation.create({
+      user_id: req.session.user_id,
+      client_id: dbClientData.client_id
+    })
+    .then(dbRelationData => res.json(dbRelationData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  })
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
