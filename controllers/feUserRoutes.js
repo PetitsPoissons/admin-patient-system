@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Access, Client, Relation } = require('../models');
 
-// display all users depending on user's access level
+// render all users depending on user's access level -> RESTRICTION TO BE ADDED
 router.get('/', (req, res) => {
   if (req.session.loggedIn) {
     User.findAll({
@@ -28,6 +28,16 @@ router.get('/', (req, res) => {
     res.render('login');
   }
 });
+
+// render create-user template
+router.get('/new', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('create-user');
+  }
+  else {
+    res.render('login');
+  }
+})
 
 // render single-user template - READONLY
 router.get('/:id', (req, res) => {

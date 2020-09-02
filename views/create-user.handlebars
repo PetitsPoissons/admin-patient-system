@@ -1,0 +1,100 @@
+<article class="row d-block w-100 mt-5">
+  <form id="create-user-form">
+    <h3 class="mt-3">Personal Information</h3>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="userFirstName">First Name</label>
+        <input type="text" class="form-control" id="userFirstName" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="userLastName">Last Name</label>
+        <input type="text" class="form-control" id="userLastName" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="userDob">Date of Birth</label>
+        <input type="date" class="form-control" id="userDob" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="userSsn">Social Security #</label>
+        <input type="text" class="form-control" id="userSsn" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="userActive" checked />
+          <input class="form-check-input" type="checkbox" id="userActive" value="false" />
+          <label class="form-check-label" for="userActive">Active</label>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="userAccessType">Access Type</label>
+        <select class="form-control" id="userAccessType" />
+          <option>select ...</option>
+          <option>administrator</option>
+          <option>basic</option>
+          <option>biller</option>
+          <option>clinician</option>
+          <option>superuser</option>
+        </select>
+      </div>
+    </div>
+    <h3 class="mt-3">Contact Information</h3>
+    <div class="form-group">
+      <label for="userEmail">Email</label>
+      <input type="email" class="form-control" id="userEmail" />
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="userPrimaryPhone">Mobile Phone</label>
+        <input type="phone" class="form-control" id="userPrimaryPhone" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="userAltPhone">Other Phone</label>
+        <input type="phone" class="form-control" id="userAltPhone" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="userStreetAddress">Street Address</label>
+      <input type="text" class="form-control" id="userStreetAddress" />
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="userCity">City</label>
+        <input type="text" class="form-control" id="userCity" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="userState">State</label>
+        <input type="text" class="form-control" id="userState" />
+      </div>
+      <div class="form-group col-md-2">
+        <label for="userZip">Zip</label>
+        <input type="text" class="form-control" id="userZip" />
+      </div>
+    </div>
+    <h3 class="mt-3">Clinician Information</h3>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="userLicenseNb">License #</label>
+        <input type="text" class="form-control" id="userLicenseNb" />
+      </div>
+      <div class="form-group col-md-3">
+        <label for="userLicenseType">License type</label>
+        <input type="text" class="form-control" id="userLicenseType" />
+      </div>
+      <div class="form-group col-md-3">
+        <label for="userLicenseExpiration">License Expiration</label>
+        <input type="date" class="form-control" id="userLicenseExpiration" />
+      </div>
+      <div class="form-group col-md-3">
+        <label for="userNpiNb">NPI #</label>
+        <input type="text" class="form-control" id="userNpiNb" />
+      </div>
+    </div>
+    <button type="submit" class="mt-4 btn btn-block text-white shadow save-info">Create</button>
+  </form>
+</article>
+
+<script src="/js/create-user.js"></script>

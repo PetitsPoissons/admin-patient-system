@@ -106,7 +106,8 @@ User.init(
       }
     },
     license_expiration: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: true
     },
     npi_number: {
       type: DataTypes.STRING,
