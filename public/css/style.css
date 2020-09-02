@@ -100,3 +100,7 @@ button {
 .btn-general:hover {
   background-color: rgb(34, 127, 143);
 }
+
+.square-icon {
+  font-size: 20px;
+}

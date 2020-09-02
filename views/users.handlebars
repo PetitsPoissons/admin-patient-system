@@ -44,6 +44,7 @@
         <th scope="col">E-mail</th>
         <th scope="col">Phone</th>
         <th scope="col">Access Level</th>
+        <th scope="col" class="text-center">Active</th>
         <th></th>
       </tr>
     </thead>
@@ -58,6 +59,11 @@
         <td><a href="mailto:{{ email }}">{{ email }}</a></td>
         <td><a href="tel:{{ primary_phone }}">{{ primary_phone }}</a></td>
         <td>{{ access.access_type }}</td>
+        {{#if active}}
+          <td class="square-icon text-center"><i class="far fa-check-square"></i></td>
+        {{else}}
+          <td class="square-icon text-center"><i class="far fa-square"></i></td>
+        {{/if}}
         <td><button type="submit" class="btn btn-delete bg-default"><i class="fa fa-trash text-danger"></i></button></td>
       </tr>
       {{/each}}

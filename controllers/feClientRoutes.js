@@ -2,8 +2,10 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Client, User, Relation } = require('../models');
 
-// render template to create a new client
-// render create client page
+////////////////////////////////////////////
+// render template to create a new client //
+////////////////////////////////////////////
+
 router.get('/new', (req, res) => {
   if (req.session.loggedIn) {
     res.render('new-client');
@@ -13,11 +15,14 @@ router.get('/new', (req, res) => {
   }
 });
 
-// render template to display all clients
+////////////////////////////////////////////
+// render template to display all clients //
+////////////////////////////////////////////
+
 router.get('/', (req, res) => {
     if (req.session.loggedIn) {
       Client.findAll({
-        attributes: ['client_id', 'first_name', 'last_name', 'email', 'primary_phone', 'alt_phone'],
+        attributes: ['client_id', 'first_name', 'last_name', 'email', 'primary_phone', 'active'],
         include: [
           {
             model: User,
@@ -31,6 +36,7 @@ router.get('/', (req, res) => {
       })
       .then(dbClientData => {
         const clients = dbClientData.map(client => client.get({ plain: true }));
+        console.log(clients);
         res.render('clients', { clients });
       })
       .catch(err => {
@@ -42,7 +48,10 @@ router.get('/', (req, res) => {
     }
 });
 
-// render single-client template - READONLY
+//////////////////////////////////////////////
+// render single-client template - READONLY //
+//////////////////////////////////////////////
+
 router.get('/:id', (req, res) => {
   if (req.session.loggedIn) {
     Client.findOne({
@@ -78,7 +87,10 @@ router.get('/:id', (req, res) => {
   }
 });
 
-// render single-client template - EDIT FORM
+///////////////////////////////////////////////
+// render single-client template - EDIT FORM //
+///////////////////////////////////////////////
+
 router.get('/edit/:id', (req, res) => {
   if (req.session.loggedIn) {
     Client.findOne({

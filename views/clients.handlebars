@@ -9,8 +9,7 @@
         <th scope="col">Name</th>
         <th scope="col">E-mail</th>
         <th scope="col">Phone</th>
-        <th scope="col">Alt Phone</th>
-        <!--th scope="col">Clinician</th-->
+        <th scope="col" class="text-center">Active</th>
       </tr>
     </thead>
     <tbody>
@@ -22,8 +21,11 @@
           </a>
         <td><a href="mailto:{{ email }}">{{ email }}</a></td>
         <td><a href="tel:{{ primary_phone }}">{{ primary_phone }}</a></td>
-        <td><a href="tel:{{ alt_phone }}">{{ alt_phone }}</a></td>
-        <!--td></td-->
+        {{#if active}}
+          <td class="square-icon text-center"><i class="far fa-check-square"></i></td>
+        {{else}}
+          <td class="square-icon text-center"><i class="far fa-square"></i></td>
+        {{/if}}
       </tr>
       {{/each}}
     </tbody>
