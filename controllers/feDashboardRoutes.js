@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Client, Relation, Treatment } = require('../models');
+const { Client, Relation, Treatment, Procedure } = require('../models');
 
 ////////////////////////////////////////////
 // display all clients for this clinician //
@@ -44,11 +44,18 @@ router.get('/tx/:id', (req, res) => {
       relation_id: req.params.id
     },
     attributes: ['tx_date'],
+    include: [
+      {
+        model: Procedure,
+        attributes: ['procedure_name', 'cpt_code', 'duration']
+      }
+    ],
     order: ['tx_date']
   })
   .then(dbTxData => {
     // serialize data
     const treatments = dbTxData.map(tx => tx.get({ plain: true }));
+    console.log(treatments);
     // render data
     res.render('treatments', { treatments, loggedIn: true });
   })
