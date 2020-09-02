@@ -61,7 +61,10 @@ router.get('/', (req, res) => {
   }
 });
 
-// render create-user template
+/////////////////////////////////
+// render create-user template //
+/////////////////////////////////
+
 router.get('/new', (req, res) => {
   if (req.session.loggedIn) {
     res.render('create-user');
