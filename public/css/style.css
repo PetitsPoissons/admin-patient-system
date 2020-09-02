@@ -69,6 +69,29 @@
   font-weight: 900;
 }
 
+#logout {
+  cursor: pointer;
+}
+
+#search-clients {
+  font-style: italic;
+}
+
+#btn-search {
+  color: white;
+  font-size: x-large;
+}
+
+.btn-delete {
+  margin: 0;
+  padding: 0;
+  font-size: large;
+}
+
+button {
+  transition: background-color .1s;
+}
+
 .btn-general {
   background-color: rgb(42, 152, 172);
   font-weight: 900;

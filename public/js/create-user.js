@@ -26,10 +26,14 @@ async function createUserFormHandler(event) {
   const zip = document.querySelector('#userZip').value.trim();
   const license_number = document.querySelector('#userLicenseNb').value.trim();
   const license_type = document.querySelector('#userLicenseType').value.trim();
-  // const license_expiration = document.querySelector('#userLicenseExpiration').value.trim();
-  const license_expiration = null;
   const npi_number = document.querySelector('#userNpiNb').value.trim();
 
+  // get license_expiration
+  let license_expiration = document.querySelector('#userLicenseExpiration').value.trim();
+  if (!license_expiration) {
+    license_expiration = null;
+  }
+  
   // get active status
   let active = false;
   if (document.querySelector('#userActive').value === 'on') {

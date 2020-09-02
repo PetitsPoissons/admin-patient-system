@@ -18,10 +18,18 @@ User.init(
       allowNull: false
     },
     username: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [6, 20]
+      }
     },
     password: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [6, 20]
+      }
     },
     email: {
       type: DataTypes.STRING,

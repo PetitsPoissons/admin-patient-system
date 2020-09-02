@@ -1,7 +1,7 @@
 <div class="container my-3">
   <div class="row mt-5 mb-3 d-flex justify-content-between">
-    <h4 class="my-5">Clients List</h4>
-    <button type="button" class="my-5 btn btn-general shadow text-white" onClick="goToNewClientPage()">+ Add Client</button>
+    <h4>Clients List</h4>
+    <button type="button" class="btn btn-general shadow text-white" onClick="goToNewClientPage()">+ Add Client</button>
   </div>
   <table class="table table-hover">
     <thead>
@@ -20,10 +20,10 @@
           <a href="/clients/{{ client_id }}">
             {{ last_name }}, {{ first_name }}
           </a>
-        </td>
-        <td>{{ email }}</td>
-        <td>{{ primary_phone }}</td>
-        <td>{{ alt_phone }}</td>
+        </td><a href="mailto:webmaster@example.com">Jon Doe</a>
+        <td><a href="mailto:{{ email }}">{{ email }}</a></td>
+        <td><a href="tel:{{ primary_phone }}">{{ primary_phone }}</a></td>
+        <td><a href="tel:{{ alt_phone }}">{{ alt_phone }}</a></td>
         <!--td></td-->
       </tr>
       {{/each}}
