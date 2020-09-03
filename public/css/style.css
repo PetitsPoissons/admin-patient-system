@@ -1,8 +1,8 @@
-#clientsButton {
+.clientsButton {
     background-color: rgb(42, 152, 172); 
     /*color: whitesmoke;*/
     text-align: center;
-    font-size: 20px;
+    font-size: 40px;
     opacity: 0.9; /* See the text very clearly over the background */
   };
     
@@ -23,7 +23,7 @@
     background-color: rgb(42, 152, 172); 
     color: whitesmoke;
     text-align: center;
-    font-size: 20px;
+    font-size: 40px;
     opacity: 0.9; /* See the text very clearly over the background */
  };
             
@@ -43,7 +43,7 @@
     background-color: rgb(42, 152, 172); 
     color: whitesmoke;
     text-align: center;
-    font-size: 20px;
+    font-size: 40px;
     opacity: 0.9; /* See the text very clearly over the background */
         };
                     
@@ -99,4 +99,31 @@ button {
 
 .btn-general:hover {
   background-color: rgb(34, 127, 143);
+}
+
+.square-icon {
+  font-size: 20px;
+}
+.navbar-brand {
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+#emhr {
+  font-style: italic;
+  font-size: small;
+  color: rgb(42, 152, 172);
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+#nb_tx_dates a {
+  text-decoration: none;
+}
+
+#nb_tx_dates {
+  font-size: large;
+  color: rgb(42, 152, 172);
+  font-weight: bold;
+  text-decoration: none;
 }

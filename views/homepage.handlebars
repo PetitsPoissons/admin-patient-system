@@ -1,7 +1,15 @@
+{{#if admin_access}}
+
 <div class="col my-5 py-5">
   <div class="row d-flex justify-content-around my-5 py-5">
-    <button type="button" class="mx-auto btn btn-outline-success btn-lg shadow-lg p-3 mb-5 bg-white rounded" id = clientsButton>CLIENTS</button>
-    <button type="button" class="mx-auto btn btn-outline-info btn-lg shadow-lg p-3 mb-5 bg-white rounded" id = recordsButton>RECORDS</button>
-    <button type="button" class="mx-auto btn btn-outline-warning btn-lg shadow-lg p-3 mb-5 bg-white rounded" id = adminButton>ADMIN</button>
+    <a href="/clients">
+    <button type="button" class="mx-auto btn btn-outline-success btn-lg shadow-lg p-5 mb-5 bg-white rounded clientsButton">CLIENTS</button></a>
+    <button type="button" class="mx-auto btn btn-outline-info btn-lg shadow-lg p-5 mb-5 bg-white rounded clientsButton">RECORDS</button>
+    <button type="button" class="mx-auto btn btn-outline-warning btn-lg shadow-lg p-5 mb-5 bg-white rounded clientsButton">ADMIN</button>
   </div>
 </div>
+{{else}}
+<script>
+  document.location.replace('/dashboard');
+</script>
+{{/if}}
