@@ -33,20 +33,23 @@
               <li class="nav-item">
                 <a class="nav-link" href="/users">Users</a>
               </li>
-            {{else}}
+            {{/if}}
+            {{#if shrink_access}}
               <li class="nav-item">
                 <a class="nav-link" href="/dashboard">Dashboard</a>
               </li>
+            {{/if}}
+            {{#if loggedIn}}
               <li class="nav-item">
                 <div class="nav-link" id="logout">Logout</div>
               </li>
-            {{/if}}
-            {{#unless loggedIn}}
+            {{else}}
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
               </li>
-            {{/unless}}
+            {{/if}}
           </ul>
+          <div class="text-white" name="{{shrink_access}}"></div>
         </div>
       </nav>
     </header>

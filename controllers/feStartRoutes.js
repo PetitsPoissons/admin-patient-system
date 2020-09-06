@@ -69,7 +69,11 @@ router.get('/', (req, res) => {
         biller_access = true;
         break;
     }
-    res.render('homepage', { super_access, admin_access, shrink_access, basic_access, biller_access, loggedIn });
+    console.log('****************************');
+    console.log('admin_access', admin_access);
+    console.log('shrink_access', shrink_access);
+    console.log('loggedIn', loggedIn);
+    res.render('homepage', { admin_access, shrink_access, loggedIn });
   }
   else {
     res.render('login');
