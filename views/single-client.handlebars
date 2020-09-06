@@ -1,0 +1,20 @@
+<article class="row d-block w-100 mt-5">
+  <form id="readonly">
+    <p class="text-right">
+      <a href="/clients/edit/{{ client.client_id }}" class="edit-link">
+        Edit {{ client.first_name }} {{ client.last_name }}'s information
+      </a>
+    </p>
+
+  {{> client-info client }}
+
+  </form>
+  
+  <p>{{ client.first_name }} {{ client.last_name }} has {{ client.clinicians_nb }} {{ format_plural "clinician" client.clinicians_nb }} assigned.  
+  </p>
+  <p class="text-right">
+    <a href="/clients/records/{{ client.client_id }}" class="edit-link">
+      View {{ client.first_name }} {{ client.last_name }}'s records
+    </a>
+  </p>
+</article>

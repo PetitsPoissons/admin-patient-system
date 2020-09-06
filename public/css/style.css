@@ -1,0 +1,131 @@
+/* Navigation Bar */
+
+#emhr {
+  font-style: italic;
+  font-size: medium;
+  color: rgb(42, 152, 172);
+}
+
+.clientsButton {
+    background-color: rgb(42, 152, 172); 
+    /*color: whitesmoke;*/
+    text-align: center;
+    font-size: 40px;
+    opacity: 0.9; /* See the text very clearly over the background */
+  };
+    
+    img.opacity {
+        opacity: 1;
+        filter: alpha(opacity=100); /* IE8 and lower */
+        zoom: 1; /* Triggers "hasLayout" in IE 7 and lower */
+      };
+      
+    img.opacity:hover {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        zoom: 1;
+      };
+
+
+#recordsButton {
+    background-color: rgb(42, 152, 172); 
+    color: whitesmoke;
+    text-align: center;
+    font-size: 40px;
+    opacity: 0.9; /* See the text very clearly over the background */
+ };
+            
+     img.opacity {
+                opacity: 1;
+                filter: alpha(opacity=100); /* IE8 and lower */
+                zoom: 1; /* Triggers "hasLayout" in IE 7 and lower */
+         };
+              
+     img.opacity:hover {
+                opacity: 0.5;
+                filter: alpha(opacity=50);
+                zoom: 1;
+              };
+    
+#adminButton {
+    background-color: rgb(42, 152, 172); 
+    color: whitesmoke;
+    text-align: center;
+    font-size: 40px;
+    opacity: 0.9; /* See the text very clearly over the background */
+        };
+                    
+     img.opacity {
+                        opacity: 1;
+                        filter: alpha(opacity=100); /* IE8 and lower */
+                        zoom: 1; /* Triggers "hasLayout" in IE 7 and lower */
+                 };
+                      
+     img.opacity:hover {
+                        opacity: 0.5;
+                        filter: alpha(opacity=50);
+                        zoom: 1;
+                      };
+
+#readonly input {
+  background-color: transparent;
+  border: 1px solid lightgrey;
+}
+
+.save-info {
+  background-color: rgb(42, 152, 172);
+  font-weight: 900;
+}
+
+#logout {
+  cursor: pointer;
+}
+
+#search-clients {
+  font-style: italic;
+}
+
+#btn-search {
+  color: white;
+  font-size: x-large;
+}
+
+.btn-delete {
+  margin: 0;
+  padding: 0;
+  font-size: large;
+}
+
+button {
+  transition: background-color .1s;
+}
+
+.btn-general {
+  background-color: rgb(42, 152, 172);
+  font-weight: 900;
+}
+
+.btn-general:hover {
+  background-color: rgb(34, 127, 143);
+}
+
+.square-icon {
+  font-size: 20px;
+}
+.navbar-brand {
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+
+
+#nb_tx_dates a {
+  text-decoration: none;
+}
+
+#nb_tx_dates {
+  font-size: large;
+  color: rgb(42, 152, 172);
+  font-weight: bold;
+  text-decoration: none;
+}
