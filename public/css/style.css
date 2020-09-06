@@ -1,3 +1,11 @@
+/* Navigation Bar */
+
+#emhr {
+  font-style: italic;
+  font-size: medium;
+  color: rgb(42, 152, 172);
+}
+
 .clientsButton {
     background-color: rgb(42, 152, 172); 
     /*color: whitesmoke;*/
@@ -109,13 +117,7 @@ button {
   font-size: x-large;
 }
 
-#emhr {
-  font-style: italic;
-  font-size: small;
-  color: rgb(42, 152, 172);
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
+
 
 #nb_tx_dates a {
   text-decoration: none;
