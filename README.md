@@ -5,21 +5,16 @@
   ## Description
   
   Shrinko is a web based electronic mental health records system that provides clinicians and administrative staff easy access to client records.
-  This application has been deployed on Heroku and can be found at [HEROKU LINK HERE].
+  This application has been deployed on Heroku and can be found [here](https://shrinko.herokuapp.com/).
 
 
   ## Table of Contents
 
-  * [Demo](#demo)
   * [Models Structure](#models)
   * [Packages Used](#packages)
   * [Installation](#installation)
   * [Tests](#tests)
   * [Collaborators](#collaborators)
-
-  ## Demo
-
-  [DEMO HERE]
 
   ## Models
 
