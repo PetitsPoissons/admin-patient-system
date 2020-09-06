@@ -21,12 +21,18 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor01">
-          <form class="form-inline my-0 my-lg-0 mx-auto">
+          <form class="form-inline my-0 my-lg-0 mx-auto" hidden>
             <input class="form-control" type="text" placeholder="Search Clients" id="search-clients">
             <button class="btn" type="submit" id="btn-search"><i class="fa fa-search"></i></button>
           </form>
           <ul class="navbar-nav ml-auto">
             {{#if loggedIn}}
+            <li class="nav-item">
+              <a class="nav-link" href="/clients">Clients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users">Users</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
@@ -34,12 +40,6 @@
               <div class="nav-link" id="logout">Logout</div>
             </li>
             {{else}}
-            <li class="nav-item">
-              <a class="nav-link" href="/clients">Clients</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users">Users</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
@@ -61,7 +61,8 @@
     <hr>
     <div class="py-3">&copy;The Shrinko Project</div>
     </footer>
-
+  {{#if loggedIn}}
     <script src="/js/logout.js"></script>
+  {{/if}}
   </body>
 </html>

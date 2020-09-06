@@ -64,7 +64,7 @@
         {{else}}
           <td class="square-icon text-center"><i class="far fa-square"></i></td>
         {{/if}}
-        <td><button type="submit" class="btn btn-delete bg-default"><i class="fa fa-trash text-danger"></i></button></td>
+        <td class="del-user"><button class="btn btn-delete bg-default" id="{{ user_id }}"><i class="fa fa-trash text-danger"></i></button></td>
       </tr>
       {{/each}}
     </tbody>
@@ -77,6 +77,8 @@
     document.location.replace('/users/new');
   }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/delete-user.js"></script>
 {{/if}}
 {{#if admin_access }}
 <script>
