@@ -12,6 +12,7 @@ router.get('/login', (req, res) => {
 // render register page
 router.get('/register', (req, res) => {
   if (req.session.loggedIn) {
+    let loggedIn = true;
     let super_access = false;
     let admin_access = false;
     let shrink_access = false;
@@ -35,7 +36,7 @@ router.get('/register', (req, res) => {
         biller_access = true;
         break;
     }
-    res.redirect('/', { super_access, admin_access, shrink_access, basic_access, biller_access });
+    res.redirect('/', { super_access, admin_access, shrink_access, basic_access, biller_access, loggedIn });
     return;
   }
   res.render('register');
@@ -44,6 +45,7 @@ router.get('/register', (req, res) => {
 // render homepage
 router.get('/', (req, res) => {
   if (req.session.loggedIn) {
+    let loggedIn = true;
     let super_access = false;
     let admin_access = false;
     let shrink_access = false;
@@ -67,7 +69,7 @@ router.get('/', (req, res) => {
         biller_access = true;
         break;
     }
-    res.render('homepage', { super_access, admin_access, shrink_access, basic_access, biller_access });
+    res.render('homepage', { super_access, admin_access, shrink_access, basic_access, biller_access, loggedIn });
   }
   else {
     res.render('login');
