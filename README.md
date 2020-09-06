@@ -23,15 +23,15 @@
 
   ## Models
 
-  [PIC OF E/R DIAGRAM HERE]
+  ![ScreenShot](erdiagscreenshot.png)
 
   ## Packages
 
-  [LIST OF PACKAGES USED HERE: Node.js, MySQL, Express, etc.]
+  Node.js, Express.js, MySQL and the Sequelize ORM, UUID.
 
   ## Installation
 
-  1. To install the dependencies, type `  npm i  ` at the command line.
+  1. To install the dependencies, type `  npm i ` at the command line.
   2. Create a `.env` file and add your database name, MySQL username, and MySQL password as follows: 
       ```
       DB_NAME='shrinko_db'
@@ -57,4 +57,4 @@
 
   - Sean Cone ([@seanc0ne](https://github.com/seanc0ne))
   - Sandrine Poissonnet ([@PetitsPoissons](https://github.com/PetitsPoissons/))
-  - Alicia Ross ([@designurhappy](https://github.com/designurhappy)
+  - Alicia Ross ([@designurhappy](https://github.com/designurhappy))
