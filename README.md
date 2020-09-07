@@ -22,7 +22,7 @@
 
   ## Packages
 
-  Node.js, Express.js, MySQL and the Sequelize ORM, UUID.
+  Node.js, Express.js, MySQL and the Sequelize ORM, UUID, bcrypt, express-session, connect-session-sequelize, express-handlebars, dotenv
 
   ## Installation
 
@@ -32,6 +32,7 @@
       DB_NAME='shrinko_db'
       DB_USER='your_mysql_username'
       DB_PW='your_mysql_pw'
+      SESSION_SECRET='your_top_secret'
       ```
   3. Open MySQL shell and migrate the database schema by typing `source schema.sql`
   4. Type `exit` to exit the MySQL shell
